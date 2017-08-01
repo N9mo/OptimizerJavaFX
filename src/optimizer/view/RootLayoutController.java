@@ -255,7 +255,7 @@ public class RootLayoutController {
 
             gauge1.relocate(30,80);
             gauge2.relocate(230,80);
-            storCapPane.getChildren().addAll(gauge1, gauge2);
+            storCapPane.getChildren().addAll(gauge1);
 
 
 
