@@ -1,6 +1,6 @@
 package optimizer.view;
 
-import com.sun.javafx.effect.EffectDirtyBits;
+
 import eu.hansolo.medusa.*;
 
 import eu.hansolo.medusa.skins.*;
@@ -12,7 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
+
 import javafx.scene.control.TextField;
 import javafx.scene.effect.*;
 import javafx.scene.input.MouseEvent;
@@ -152,35 +152,7 @@ public class RootLayoutController {
 
             progressBar.setProgress(0.75F);
 
-            FGauge fGauge = FGaugeBuilder
-                    .create()
-                    .prefSize(500, 500)
-                    .gaugeDesign(GaugeDesign.METAL)
-                    .gaugeBackground(GaugeDesign.GaugeBackground.CARBON)
-                    .foregroundVisible(true)
-                    .build();
 
-
-
-
-            Gauge gauge3 = GaugeBuilder.create()
-                    .title("Title")
-                    .subTitle("SubTitle")
-                    .unit("Unit")
-                    .build();
-            Arc arc = new Arc(125.0D, 125.0D, 121.47556499999999D, 121.47556499999999D, 90.0D, 0.0D);
-
-            Gauge gauge4 = GaugeBuilder.create().skinType(Gauge.SkinType.SLIM)
-                    .title("TITLE")
-                    .unit("UNIT")
-                    //.needleShape(Gauge.NeedleShape.FLAT) // ANGLED, ROUND, FLAT
-                   // .needleSize(Gauge.NeedleSize.THICK) // THIN, STANDARD, THICK
-                    .build();
-
-            Gauge gauge5 = GaugeBuilder.create().skinType(Gauge.SkinType.SLIM)
-                    .title("TITLE")
-                    .unit("UNIT")
-                    .build();
 
             Gauge gauge = new Gauge();
             gauge.setMaxSize(170,170);
