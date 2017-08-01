@@ -56,14 +56,7 @@ public class Main extends Application {
 
 
 
-        /*Battery bat = new Battery();
 
-        bat.setEnergyDecayed(10);
-        System.out.println("EnergyDecayed" + bat.getEnergyDecayed() );
-        bat.setEnergyCycle("1000");
-        bat.setEnergyCurrent(90);
-        bat.setEnergyDesign(110);
-        bat.setEnergyWhenFull(100);*/
     }
 
 /*    public void showBatteryPopup() {
