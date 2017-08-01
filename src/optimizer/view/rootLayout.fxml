@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.ProgressBar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="optimizer.view.RootLayoutController">
+   <children>
+      <GridPane fx:id="gridPane" prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="641.0" minWidth="10.0" prefWidth="513.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="539.0" minWidth="10.0" prefWidth="511.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="170.0" minHeight="160.0" prefHeight="135.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="150.0" minHeight="130.0" prefHeight="25.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="282.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="160.0" minHeight="170.0" prefHeight="283.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Pane fx:id="optPerfPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="40.0" top="10.0" />
+               </GridPane.margin>
+               <children>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="119.0" prefWidth="461.0" text="Optimize Performance">
+                     <font>
+                        <Font name="Catamaran Bold" size="20.0" />
+                     </font></Button>
+                  <Text fx:id="optDescriptionProcess" fill="#616161" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Increase your performance">
+                     <font>
+                        <Font name="Catamaran SemiBold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="wifiPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+               <children>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="119.0" prefWidth="463.0" text="Fix Wi-Fi">
+                     <font>
+                        <Font name="Catamaran Bold" size="20.0" />
+                     </font></Button>
+                  <Text fx:id="wifiDescriptionProcess" fill="#616161" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Having trouble connecting over Wi-Fi? Fix it with this">
+                     <font>
+                        <Font name="Catamaran SemiBold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="storCapPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="40.0" top="10.0" />
+               </GridPane.margin>
+               <children>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="270.0" prefWidth="461.0" text="Storage Capacity">
+                     <font>
+                        <Font name="Catamaran Bold" size="20.0" />
+                     </font></Button>
+                  <Text fill="#616161" layoutX="98.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hard Drive 1">
+                     <font>
+                        <Font name="Catamaran SemiBold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#616161" layoutX="291.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hard Drive 2">
+                     <font>
+                        <Font name="Catamaran SemiBold" size="15.0" />
+                     </font>
+                  </Text>
+               </children></Pane>
+            <Pane fx:id="webStatPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="40.0" left="40.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+               <children>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="119.0" prefWidth="463.0" text="Website Status Check">
+                     <font>
+                        <Font name="Catamaran Bold" size="20.0" />
+                     </font></Button>
+                  <Text fx:id="webDescriptionProcess" fill="#616161" layoutX="14.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Find out if a website is up or down for everyone; or just you.">
+                     <font>
+                        <Font name="Catamaran SemiBold" size="15.0" />
+                     </font>
+                  </Text>
+               </children></Pane>
+            <Pane fx:id="finderDockPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="40.0" left="10.0" right="40.0" top="10.0" />
+               </GridPane.margin>
+               <children>
+                  <Button fx:id="finderDockbutton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#finderDockKill" prefHeight="119.0" prefWidth="461.0" text="Finder/Dock Fixer">
+                     <font>
+                        <Font name="Catamaran Bold" size="20.0" />
+                     </font></Button>
+                  <Text fx:id="finderDescriptionProcess" fill="#616161" layoutX="14.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For use when upper or lower bars are not displaying properly">
+                     <font>
+                        <Font name="Catamaran SemiBold" size="15.0" />
+                     </font>
+                  </Text>
+               </children></Pane>
+            <Pane fx:id="optimizingPane" prefWidth="662.0" GridPane.columnSpan="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="40.0" right="40.0" top="40.0" />
+               </GridPane.margin>
+               <children>
+                  <Button fx:id="optmizingButton" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="119.0" prefWidth="944.0" text="Optimizing Performance">
+                     <font>
+                        <Font name="Catamaran Bold" size="20.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+                  <Text layoutX="891.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="25%">
+                     <font>
+                        <Font name="Roboto Bold" size="20.0" />
+                     </font></Text>
+                  <ProgressBar fx:id="progressBar" layoutX="17.0" layoutY="62.0" prefHeight="20.0" prefWidth="909.0" progress="0.81" />
+
+                  
+                  
+               </children>
+            </Pane>
+            <Pane fx:id="batStatPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+               <children>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#openBatteryDialog" onMouseClicked="#setBattery" prefHeight="270.0" prefWidth="463.0" text="Battery Status">
+                     <font>
+                        <Font name="Catamaran Bold" size="20.0" />
+                     </font></Button>
+                  <Text fx:id="battDescriptionProcess" disable="true" fill="#616161" layoutX="14.0" layoutY="64.0" onMouseClicked="#setBattery" strokeType="OUTSIDE" strokeWidth="0.0" text="How healthy your battery is">
+                     <font>
+                        <Font name="Catamaran SemiBold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text disable="true" fill="#616161" layoutX="94.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Battery">
+                     <font>
+                        <Font name="Catamaran SemiBold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text disable="true" fill="#616161" layoutX="94.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Factory Battery">
+                     <font>
+                        <Font name="Catamaran SemiBold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="20.0" layoutX="67.0" layoutY="137.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="#8891a8" height="20.0" layoutX="67.0" layoutY="180.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" />
+               </children>
+            </Pane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

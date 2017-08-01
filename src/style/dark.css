@@ -1,0 +1,28 @@
+.root {
+    -fx-base: rgb(50, 50, 50);
+    -fx-background: rgb(15, 20, 35);
+    -fx-control-inner-background:  rgb(20, 50, 50);
+}
+
+
+
+
+
+
+
+/*.button {
+    -fx-background-color: linear-gradient(to bottom, -fx-base,-fx-base +30%);
+}*/
+
+/*
+.button:hover {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-color: -fx-hover-base;
+}
+*/
+
+
+
+
+
+

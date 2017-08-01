@@ -1,0 +1,11 @@
+Every typeface I used is open source and can be found on Google Fonts: 
+
+https://fonts.google.com/
+
+
+
+All of the black headlines (Fix Wi-Fi, Optimize Performance) are Catamaran Bold
+
+The gray subheads (RAM Performance increased by, Hard Drive 1) are Catamaran Semibold
+
+All of the numbers and percent signs are Roboto Bold
