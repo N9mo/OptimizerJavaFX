@@ -54,7 +54,7 @@ public class Login {
         Pane layout = new Pane();
         layout.getChildren().addAll(username, password, loginBtn);
         Scene scene = new Scene(layout);
-        layout.getStylesheets().add(this.getClass().getResource("/style/dark.css").toExternalForm());
+        layout.getStylesheets().add(this.getClass().getResource("/optimizer/view/dark.css").toExternalForm());
 
         username.setFocusTraversable(false);
         password.setFocusTraversable(false);

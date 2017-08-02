@@ -5,17 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import optimizer.Controller.BatteryController;
-import optimizer.model.Battery;
 import optimizer.model.Login;
 import optimizer.view.BatteryDialogController;
-import optimizer.view.RootLayoutController;
 
 import java.io.IOException;
 
@@ -36,7 +32,7 @@ public class Main extends Application {
         primaryStage.setTitle("MemoryController");
         Scene scene = new Scene(root, 1024, 768);
         primaryStage.setResizable(false);
-        scene.getStylesheets().add("style/dark.css");
+        scene.getStylesheets().add("optimizer/view/dark.css");
         primaryStage.setScene(scene);
         primaryStage.show();
 
