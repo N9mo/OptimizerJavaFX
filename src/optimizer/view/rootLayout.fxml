@@ -98,7 +98,7 @@
                   <Insets bottom="40.0" left="10.0" right="40.0" top="10.0" />
                </GridPane.margin>
                <children>
-                  <Button fx:id="finderDockbutton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#finderDockKill" prefHeight="119.0" prefWidth="461.0" text="Finder/Dock Fixer">
+                  <Button fx:id="finderDockbutton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#openFinderDockDialog" prefHeight="119.0" prefWidth="461.0" text="Finder/Dock Fixer">
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>
@@ -136,11 +136,11 @@
                   <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
                </GridPane.margin>
                <children>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#openBatteryDialog" onMouseClicked="#setBattery" prefHeight="270.0" prefWidth="463.0" text="Battery Status">
+                  <Button fx:id="bateryButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#openBatteryDialog" onMouseClicked="#showGauge" prefHeight="270.0" prefWidth="463.0" text="Battery Status">
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>
-                  <Text fx:id="battDescriptionProcess" disable="true" fill="#616161" layoutX="14.0" layoutY="64.0" onMouseClicked="#setBattery" strokeType="OUTSIDE" strokeWidth="0.0" text="How healthy your battery is">
+                  <Text fx:id="battDescriptionProcess" disable="true" fill="#616161" layoutX="14.0" layoutY="64.0"  strokeType="OUTSIDE" strokeWidth="0.0" text="How healthy your battery is">
                      <font>
                         <Font name="Catamaran SemiBold" size="15.0" />
                      </font>

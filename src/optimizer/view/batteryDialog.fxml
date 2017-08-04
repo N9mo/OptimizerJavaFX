@@ -1,39 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.ProgressBar?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane fx:id="batteryPopup" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../style/dark.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="optimizer.view.BatteryDialogController">
    <children>
-      <Text fx:id="energyDesign" fill="#8d8a8a" layoutX="61.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Battery">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Text>
-      <Button fx:id="okBtn" defaultButton="true" layoutX="74.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleOk" text="ok" />
-      <Text fx:id="energyDecayed" fill="#8d8a8a" layoutX="69.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Battery">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Text>
-      <Text fx:id="energyCycle" fill="#8d8a8a" layoutX="67.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Battery">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Text>
-      <Text fx:id="energyCurrent" fill="#8d8a8a" layoutX="65.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Battery">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Text>
-      <Text fx:id="energyWhenFull" fill="#8d8a8a" layoutX="62.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Battery">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Text>
-      <Button fx:id="cancelBtn" cancelButton="true" layoutX="158.0" layoutY="359.0" mnemonicParsing="false" onAction="#actionClose" text="cancel" />
-      <Button fx:id="batDiagnos" layoutX="269.0" layoutY="359.0" mnemonicParsing="false" onAction="#setBattery" text="Diagnos" />
+      <GridPane fx:id="gridPane" prefHeight="400.0" prefWidth="600.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="208.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="472.0" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="472.0" minWidth="10.0" prefWidth="311.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text fx:id="energyDecayed" fill="#8d8a8a" strokeType="OUTSIDE" strokeWidth="0.0" text="Energy Decayed" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Catamaran Bold" size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fx:id="energyDesign" fill="#8d8a8a" strokeType="OUTSIDE" strokeWidth="0.0" text="Energy Design">
+               <font>
+                  <Font name="Catamaran Bold" size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fx:id="energyCurrent" fill="#8d8a8a" strokeType="OUTSIDE" strokeWidth="0.0" text="Energy Current" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Catamaran Bold" size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fx:id="energyWhenFull" fill="#8d8a8a" strokeType="OUTSIDE" strokeWidth="0.0" text="Energy When Full" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Catamaran Bold" size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Text>
+            <Button fx:id="okBtn" mnemonicParsing="false" onAction="#actionClose" text="got it" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="batDiagnos" mnemonicParsing="false" onAction="#initialize" text="refresh" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="150.0" />
+               </GridPane.margin>
+            </Button>
+            <Text fx:id="energyCycle" fill="#8d8a8a" strokeType="OUTSIDE" strokeWidth="0.0" text="Energy Cycle" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Catamaran Bold" size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Text>
+            <ProgressBar fx:id="energyDesigneBar" prefHeight="20.0" prefWidth="270.0" progress="0.0" GridPane.columnIndex="2" />
+            <ProgressBar fx:id="energyWhenFullBar" prefHeight="20.0" prefWidth="270.0" progress="0.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ProgressBar fx:id="energyCurrentBar" prefHeight="20.0" prefWidth="270.0" progress="0.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Text fx:id="energyDesignValue" fill="#8a8888" strokeType="OUTSIDE" strokeWidth="0.0" text="value" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fx:id="energyWhenFullValue" fill="#8a8888" strokeType="OUTSIDE" strokeWidth="0.0" text="value" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fx:id="energyCurrentValue" fill="#8a8888" strokeType="OUTSIDE" strokeWidth="0.0" text="value" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fx:id="energyDecayedValue" fill="#8a8888" strokeType="OUTSIDE" strokeWidth="0.0" text="value" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fx:id="energyCycleValue" fill="#8a8888" strokeType="OUTSIDE" strokeWidth="0.0" text="value" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+         </children>
+      </GridPane>
    </children>
 </Pane>

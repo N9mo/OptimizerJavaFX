@@ -1,21 +1,23 @@
 package optimizer;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import optimizer.Controller.BatteryController;
-import optimizer.model.Battery;
-import optimizer.model.Login;
-import optimizer.view.BatteryDialogController;
-import optimizer.view.RootLayoutController;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -25,8 +27,7 @@ public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
 
-    Login loginWindow = new Login();
-    public static Stage windowMain;
+   // public static Stage windowMain;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -40,107 +41,77 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-
-
-        //start loginWindow
-        windowMain = primaryStage;
+        //show loginWindow
+        //windowMain = primaryStage;
         root.setEffect(new GaussianBlur());
-        loginWindow.display();
+        //showLoginWindow();
         root.setEffect(null);
-        test();
-
-
     }
 
-    private  void test(){
+    public void showLoginWindow() throws IOException {
+        Stage window = new Stage();
+        //window.setTitle("login");
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.initStyle(StageStyle.UNDECORATED);
+        window.setHeight(300);
+        window.setWidth(300);
+        //Text auth = new Text();
+        //auth.setTranslateY(40);
+        //auth.setTranslateX(100);
+        //auth.setText("Authentication");
+
+        //auth.getStyleClass().add("auth");
+        TextField username = new TextField();
+        //username.setAccessibleText("AccessibleText");
+        //username.setAccessibleHelp("AccessibleHelp");
+        username.setPromptText("user name");
+        username.setStyle("-fx-text-inner-color: gray;");
+        //username.setText("setText");
 
 
+        username.setTranslateY(70);
+        username.setTranslateX(65);
+        PasswordField password = new PasswordField();
+        password.setPromptText("password");
+        password.setStyle("-fx-text-inner-color: gray;");
+        password.setTranslateY(100);
+        password.setTranslateX(65);
+        Button loginBtn = new Button();
+        loginBtn.setText("Login");
+        loginBtn.setTextFill(Color.GRAY);
+        loginBtn.getStyleClass().add("loginBtn");
+        loginBtn.setStyle("-fx-cursor: hand");
+        loginBtn.setMinHeight(50);
+        loginBtn.setMinWidth(100);
+        loginBtn.setTranslateX(100);
+        loginBtn.setTranslateY(155);
 
-        /*Battery bat = new Battery();
+        loginBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (username.getText().equals("user") && password.getText().equals("admin")) {
+                    window.close();
+                } else {
+                    System.out.println("Error");
+                }
+            }
+        });
 
-        bat.setEnergyDecayed(10);
-        System.out.println("EnergyDecayed" + bat.getEnergyDecayed() );
-        bat.setEnergyCycle("1000");
-        bat.setEnergyCurrent(90);
-        bat.setEnergyDesign(110);
-        bat.setEnergyWhenFull(100);*/
+        Pane layout = new Pane();
+        layout.getChildren().addAll(username, password, loginBtn);
+        Scene scene = new Scene(layout);
+        layout.getStylesheets().add(this.getClass().getResource("/style/dark.css").toExternalForm());
+
+        username.setFocusTraversable(false);
+        password.setFocusTraversable(false);
+
+        window.setScene(scene);
+        window.setAlwaysOnTop(true);
+        window.showAndWait();
     }
-
-/*    public void showBatteryPopup() {
-        try {
-            // Загружаем сведения об адресатах.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
-
-            // Помещаем сведения об адресатах в центр корневого макета.
-            rootLayout.setCenter(personOverview);
-
-            // Даём контроллеру доступ к главному приложению.
-            PersonOverviewController controller = loader.getController();
-            controller.setMainApp(this);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
-
-
 
     public static void main(String[] args) {
 
         launch(args);
     }
-
-    /**
-     * Показывает в корневом макете сведения об адресатах.
-     */
-    public boolean showBatteryDialog() {
-        /*try {
-            // Загружаем сведения о батарее.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("view/batteryDialog.fxml"));
-            Pane pane = (Pane) loader.load();
-
-            // Помещаем сведения о батарее в центр корневого макета.
-            rootLayout.setCenter(pane);
-
-            // Даём контроллеру доступ к главному приложению.
-            BatteryDialogController controller = loader.getController();
-            controller.setMainApp(this);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-*/
-        try {
-            // Загружаем fxml-файл и создаём новую сцену
-            // для всплывающего диалогового окна.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("view/batteryDialog.fxml"));
-            Pane page = (Pane) loader.load();
-
-            // Создаём диалоговое окно Stage.
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("BatteryDialog");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-
-            // Передаём адресата в контроллер.
-            BatteryDialogController controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-            controller.setMainApp(this);
-
-            // Отображаем диалоговое окно и ждём, пока пользователь его не закроет
-            dialogStage.showAndWait();
-
-            return controller.isOkClicked();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
 }

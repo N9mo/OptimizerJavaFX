@@ -19,17 +19,18 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Arc;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import optimizer.Controller.BatteryController;
 import optimizer.Controller.DockController;
 import optimizer.Controller.FinderController;
 import optimizer.Main;
 import optimizer.model.Battery;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 
 public class RootLayoutController {
@@ -61,7 +62,7 @@ public class RootLayoutController {
     @FXML
     private Button optimizerButton;
 
-    public GridPane getGridPane() {
+    /*public GridPane getGridPane() {
         return gridPane;
     }
 
@@ -69,19 +70,140 @@ public class RootLayoutController {
         this.gridPane = gridPane;
     }
 
-    /**
+    *//**
      * Вызывается главным приложением, которое даёт на себя ссылку.
      *
      * @param mainApp
-     */
+     *//*
     public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
-    }
+    }*/
 
     @FXML
-    public void finderDockKill(){
-        FinderController.finderKill();
-        DockController.dockKill();
+    private void initialize() {
+//
+        Gauge batteryGauge = new Gauge();
+        batteryGauge.setMaxSize(170,170);
+        //gauge.setMinValue(0);
+        //gauge.setMaxValue(100);
+        //gauge.setValue(75);
+        batteryGauge.setSkin(new FlatSkin(batteryGauge));
+        //gauge.setAutoScale(true);
+        batteryGauge.setAnimated(true);
+        batteryGauge.setAnimationDuration(10000);
+        batteryGauge.setTitle("");
+        batteryGauge.setUnit("%");
+        batteryGauge.setDecimals(0);
+        batteryGauge.setBarBackgroundColor(Color.rgb(229, 237, 255));
+        batteryGauge.setValueColor(Color.GRAY);
+        batteryGauge.setTitleColor(Color.DARKRED);
+        batteryGauge.setSubTitleColor(Color.WHITE);
+        batteryGauge.setBarBorderColor(Color.GREEN);
+        batteryGauge.setBarColor(Color.rgb(44, 101, 189));
+        batteryGauge.setNeedleColor(Color.WHITE);
+        batteryGauge.setThresholdColor(Color.rgb(204, 0, 0));
+        batteryGauge.setTickLabelColor(Color.rgb(151, 151, 151));
+        batteryGauge.setTickMarkColor(Color.GRAY);
+        batteryGauge.setTickLabelOrientation(TickLabelOrientation.ORTHOGONAL);
+        batteryGauge.setDisable(false);
+        batteryGauge.setSectionsVisible(true);
+        //gauge.setSections(new Section(74, 100, Color.ORANGE));
+        //gauge.addSection(new Section(74, 75, Color.ORANGE));
+        batteryGauge.setAreasVisible(true);
+        batteryGauge.setAreas(new Section(75, 100, Color.RED));
+
+        batteryGauge.relocate(230,80);
+        batStatPane.getChildren().addAll(batteryGauge);
+
+        BatteryController batteryController = new BatteryController();
+        batteryController.initBatTest();
+        batteryController.showBatInfoTest();
+        HashMap<String,Double> map = batteryController.showBatInfoTest();
+        batteryGauge.setValue((map.get("EnergyCurrent"))/(map.get("EnergyDesign"))*100);
+
+
+
+        Gauge gauge1 = new Gauge();
+        gauge1.setMaxSize(170,170);
+        gauge1.setMinValue(0);
+        gauge1.setMaxValue(100);
+        gauge1.setValue(90);
+        gauge1.setSkin(new FlatSkin(gauge1));
+        //gauge1.setAutoScale(true);
+        gauge1.setAnimated(true);
+        gauge1.setAnimationDuration(10000);
+        gauge1.setTitle("");
+        gauge1.setUnit("%");
+        gauge1.setDecimals(0);
+        gauge1.setBarBackgroundColor(Color.rgb(229, 237, 255));
+        gauge1.setValueColor(Color.GRAY);
+        gauge1.setTitleColor(Color.DARKRED);
+        gauge1.setSubTitleColor(Color.WHITE);
+        gauge1.setBarBorderColor(Color.GREEN);
+        gauge1.setBarColor(Color.rgb(44, 101, 189));
+        gauge1.setNeedleColor(Color.WHITE);
+        gauge1.setThresholdColor(Color.rgb(204, 0, 0));
+        gauge1.setTickLabelColor(Color.rgb(151, 151, 151));
+        gauge1.setTickMarkColor(Color.BLACK);
+        gauge1.setTickLabelOrientation(TickLabelOrientation.ORTHOGONAL);
+
+        Gauge gauge2 = new Gauge();
+        gauge2.setMaxSize(170,170);
+        gauge2.setMinValue(0);
+        gauge2.setMaxValue(100);
+        gauge2.setValue(45);
+        gauge2.setSkin(new FlatSkin(gauge2));
+        //gauge2.setAutoScale(true);
+        gauge2.setAnimated(true);
+        gauge2.setAnimationDuration(10000);
+        gauge2.setTitle("");
+        gauge2.setUnit("%");
+        gauge2.setDecimals(0);
+        gauge2.setBarBackgroundColor(Color.rgb(229, 237, 255));
+        gauge2.setValueColor(Color.GRAY);
+        gauge2.setTitleColor(Color.DARKRED);
+        gauge2.setSubTitleColor(Color.WHITE);
+        gauge2.setBarBorderColor(Color.GREEN);
+        gauge2.setBarBackgroundColor(Color.GRAY);
+        gauge2.setBarColor(Color.rgb(44, 101, 189));
+        gauge2.setNeedleColor(Color.WHITE);
+        gauge2.setThresholdColor(Color.rgb(204, 0, 0));
+        gauge2.setTickLabelColor(Color.rgb(151, 151, 151));
+        gauge2.setTickMarkColor(Color.BLACK);
+        gauge2.setTickLabelOrientation(TickLabelOrientation.ORTHOGONAL);
+
+
+        gauge1.relocate(30,80);
+        gauge2.relocate(230,80);
+        storCapPane.getChildren().addAll(gauge1, gauge2);
+
+
+    }
+
+
+    public void openFinderDockDialog(ActionEvent actionEvent) {
+        try {
+
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("finderDockDialog.fxml"));
+            stage.setTitle("Finder/Dock Fix");
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            gridPane.setEffect(new GaussianBlur());
+            stage.show();
+/**
+ * отменяет блюр основного окна после закрітия batteryDialog * */
+            stage.setOnHidden(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    gridPane.setEffect(null);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -98,9 +220,7 @@ public class RootLayoutController {
              gridPane.setEffect(new GaussianBlur());
              stage.show();
 
-
-
-/**
+             /**
  * отменяет блюр основного окна после закрітия batteryDialog *
  */
              stage.setOnHidden(new EventHandler<WindowEvent>() {
@@ -126,7 +246,7 @@ public class RootLayoutController {
         }
     }
 
-    public void setBattery(MouseEvent mouseEvent) {
+    public void showGauge (MouseEvent mouseEvent) {
         System.out.println(mouseEvent.getButton().toString());
         if (mouseEvent.getButton().toString().equals("SECONDARY")) {
             gridPane.setBlendMode(BlendMode.OVERLAY);
@@ -144,121 +264,10 @@ public class RootLayoutController {
         if (mouseEvent.getEventType().getName().toString().equals("MOUSE_CLICKED")) {
             //Battery bat = new Battery();
             //bat.initBatt(bat.getBattInfo());
-            battDescriptionProcess.setText("Your battery's capacity has degraded " +  " %");
+            /*battDescriptionProcess.setText((map.get("EnergyDecayed")).intValue() + " %");
 
-
-
-            //textFieldBatteryArea.setText("Your battery's capacity has degraded " + bat.getEnergyDecayed() + " %");
-
-            progressBar.setProgress(0.75F);
-
-
-
-            Gauge gauge = new Gauge();
-            gauge.setMaxSize(170,170);
-            gauge.setMinValue(0);
-            gauge.setMaxValue(100);
-            gauge.setValue(75);
-            gauge.setSkin(new FlatSkin(gauge));
-            //gauge.setAutoScale(true);
-            gauge.setAnimated(true);
-            gauge.setAnimationDuration(10000);
-            gauge.setTitle("");
-            gauge.setUnit("%");
-            gauge.setDecimals(0);
-            gauge.setBarBackgroundColor(Color.rgb(229, 237, 255));
-            gauge.setValueColor(Color.GRAY);
-            gauge.setTitleColor(Color.DARKRED);
-            gauge.setSubTitleColor(Color.WHITE);
-            gauge.setBarBorderColor(Color.GREEN);
-            gauge.setBarColor(Color.rgb(44, 101, 189));
-            gauge.setNeedleColor(Color.WHITE);
-            gauge.setThresholdColor(Color.rgb(204, 0, 0));
-            gauge.setTickLabelColor(Color.rgb(151, 151, 151));
-            gauge.setTickMarkColor(Color.GRAY);
-            gauge.setTickLabelOrientation(TickLabelOrientation.ORTHOGONAL);
-            gauge.setDisable(false);
-            gauge.setSectionsVisible(true);
-            //gauge.setSections(new Section(74, 100, Color.ORANGE));
-            //gauge.addSection(new Section(74, 75, Color.ORANGE));
-            gauge.setAreasVisible(true);
-            gauge.setAreas(new Section(75, 100, Color.RED));
-
-
-
-
-            Gauge gauge1 = new Gauge();
-            gauge1.setMaxSize(170,170);
-            gauge1.setMinValue(0);
-            gauge1.setMaxValue(100);
-            gauge1.setValue(90);
-            gauge1.setSkin(new FlatSkin(gauge1));
-            //gauge1.setAutoScale(true);
-            gauge1.setAnimated(true);
-            gauge1.setAnimationDuration(10000);
-            gauge1.setTitle("");
-            gauge1.setUnit("%");
-            gauge1.setDecimals(0);
-            gauge1.setBarBackgroundColor(Color.rgb(229, 237, 255));
-            gauge1.setValueColor(Color.GRAY);
-            gauge1.setTitleColor(Color.DARKRED);
-            gauge1.setSubTitleColor(Color.WHITE);
-            gauge1.setBarBorderColor(Color.GREEN);
-            gauge1.setBarColor(Color.rgb(44, 101, 189));
-            gauge1.setNeedleColor(Color.WHITE);
-            gauge1.setThresholdColor(Color.rgb(204, 0, 0));
-            gauge1.setTickLabelColor(Color.rgb(151, 151, 151));
-            gauge1.setTickMarkColor(Color.BLACK);
-            gauge1.setTickLabelOrientation(TickLabelOrientation.ORTHOGONAL);
-
-            Gauge gauge2 = new Gauge();
-            gauge2.setMaxSize(170,170);
-            gauge2.setMinValue(0);
-            gauge2.setMaxValue(100);
-            gauge2.setValue(45);
-            gauge2.setSkin(new FlatSkin(gauge2));
-            //gauge2.setAutoScale(true);
-            gauge2.setAnimated(true);
-            gauge2.setAnimationDuration(10000);
-            gauge2.setTitle("");
-            gauge2.setUnit("%");
-            gauge2.setDecimals(0);
-            gauge2.setBarBackgroundColor(Color.rgb(229, 237, 255));
-            gauge2.setValueColor(Color.GRAY);
-            gauge2.setTitleColor(Color.DARKRED);
-            gauge2.setSubTitleColor(Color.WHITE);
-            gauge2.setBarBorderColor(Color.GREEN);
-            gauge2.setBarBackgroundColor(Color.GRAY);
-            gauge2.setBarColor(Color.rgb(44, 101, 189));
-            gauge2.setNeedleColor(Color.WHITE);
-            gauge2.setThresholdColor(Color.rgb(204, 0, 0));
-            gauge2.setTickLabelColor(Color.rgb(151, 151, 151));
-            gauge2.setTickMarkColor(Color.BLACK);
-            gauge2.setTickLabelOrientation(TickLabelOrientation.ORTHOGONAL);
-
-            Gauge gaugeTest = new Gauge();
-            gaugeTest.setMaxSize(200,200);
-            gaugeTest.setMinValue(0);
-            gaugeTest.setMaxValue(100);
-            gaugeTest.setValue(45);
-            gaugeTest.setSkin(new LinearSkin(gaugeTest));
-            gaugeTest.setDisable(true);
-            //gauge2.setAutoScale(true);
-
-
-
-
-
-
-            gauge.relocate(230,80);
-            batStatPane.getChildren().addAll(gauge);
-
-            gauge1.relocate(30,80);
-            gauge2.relocate(230,80);
-            storCapPane.getChildren().addAll(gauge1);
-
-
-
+            HashMap<String,Double> map = batteryController.showBatInfoTest();
+            batteryGauge.setValue((map.get("EnergyCurrent"))/(map.get("EnergyDesign"))*100);*/
 
         }
 

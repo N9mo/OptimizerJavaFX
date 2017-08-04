@@ -9,49 +9,49 @@ import java.io.InputStreamReader;
  */
 public class Battery {
 
-    private static int energyDesign=17;
-    private static int energyWhenFull=0;
-    private static int energyCurrent=0;
-    private static int energyCycle=0;
-    private static int energyDecayed=0;
+    private static double energyDesign=17;
+    private static double energyWhenFull=0;
+    private static double energyCurrent=0;
+    private static double energyCycle=0;
+    private static double energyDecayed=0;
 
-    public int getEnergyDesign() {
+    public double getEnergyDesign() {
         return energyDesign;
     }
 
-    public int getEnergyWhenFull() {
+    public double getEnergyWhenFull() {
         return energyWhenFull;
     }
 
-    public int getEnergyCurrent() {
+    public double getEnergyCurrent() {
         return energyCurrent;
     }
 
-    public int getEnergyCycle() {
+    public double getEnergyCycle() {
         return energyCycle;
     }
 
-    public int getEnergyDecayed() {
+    public double getEnergyDecayed() {
         return energyDecayed;
     }
 
-    public void setEnergyDesign(int energyDesign) {
+    public void setEnergyDesign(double energyDesign) {
         this.energyDesign = energyDesign;
     }
 
-    public void setEnergyWhenFull(int energyWhenFull) {
+    public void setEnergyWhenFull(double energyWhenFull) {
         this.energyWhenFull = energyWhenFull;
     }
 
-    public void setEnergyCurrent(int energyCurrent) {
+    public void setEnergyCurrent(double energyCurrent) {
         this.energyCurrent = energyCurrent;
     }
 
-    public void setEnergyCycle(int energyCycle) {
+    public void setEnergyCycle(double energyCycle) {
         this.energyCycle = energyCycle;
     }
 
-    public void setEnergyDecayed(int energyDecayed) {
+    public void setEnergyDecayed(double energyDecayed) {
         this.energyDecayed = energyDecayed;
     }
 }

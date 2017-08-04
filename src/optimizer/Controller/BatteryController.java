@@ -11,13 +11,15 @@ import java.util.HashMap;
  */
 public class BatteryController {
 
-    Battery bat = new Battery();
+    private Battery bat = new Battery();
 
     public void setBat(){
         initBatt(getBattInfo());
     }
 
         //get raw String with batt info
+
+
     public String getBattInfo() {
         Process p = null;
         String outputStringTemp = "";
@@ -59,36 +61,12 @@ public class BatteryController {
         System.out.println("Energy Cycle: " + bat.getEnergyCycle());//Test
 
         bat.setEnergyDecayed((int) ((bat.getEnergyWhenFull()/bat.getEnergyDesign() - 1) * 100));
-
-
     }
 
-    public void setBatTest(){
 
 
-        bat.setEnergyCurrent(1000);
-        System.out.println("Energy Current: " + bat.getEnergyCurrent() + " mAh");//Test
-
-
-        bat.setEnergyWhenFull(3000);
-        System.out.println("Energy When Full: " + bat.getEnergyWhenFull() + " mAh");//Test
-
-
-        bat.setEnergyDesign(5000);
-        System.out.println("Energy Design: " + bat.getEnergyDesign() + " mAh");//Test
-
-
-        bat.setEnergyCycle(317);
-        System.out.println("Energy Cycle: " + bat.getEnergyCycle());//Test
-
-        bat.setEnergyDecayed((int) ((bat.getEnergyWhenFull()/bat.getEnergyDesign() - 1) * 100));
-        System.out.println("Decayed: " + bat.getEnergyDecayed());//Test
-
-
-    }
-
-    public HashMap<String, Integer> getBatInfoTest(){
-        HashMap <String , Integer > map = new HashMap<>();
+    public HashMap<String, Double> showBatInfoTest(){
+        HashMap <String , Double > map = new HashMap<>();
         map.put("EnergyCurrent", bat.getEnergyCurrent());
         map.put("EnergyWhenFull", bat.getEnergyWhenFull());
         map.put("EnergyDesign", bat.getEnergyDesign());
@@ -100,6 +78,16 @@ public class BatteryController {
     }
 
 
+    public void initBatTest() {
+        bat.setEnergyCurrent(3200);
+        bat.setEnergyWhenFull(3800);
+        bat.setEnergyDesign(4000);
+        bat.setEnergyCycle(150);
+        bat.setEnergyDecayed((((1.0 - Double.valueOf(bat.getEnergyWhenFull())/Double.valueOf(bat.getEnergyDesign()) ) * 100)));
+        System.out.println(((((double)(1 -(bat.getEnergyWhenFull()/bat.getEnergyDesign() ))))));
+
+
+    }
 }
 
 
