@@ -22,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import optimizer.Controller.BatteryController;
 import optimizer.Controller.DockController;
@@ -209,10 +210,37 @@ public class RootLayoutController {
         }
     }
 
+    public void openFinderDockDialog(ActionEvent actionEvent) {
+        try {
+            gridPane.setEffect(new GaussianBlur());
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("finderDockDialog.fxml"));
+            stage.setTitle("Finder/Dock fixer");
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+
+            /**
+ * отменяет блюр основного окна после закрітия batteryDialog *
+ */
+            stage.setOnHidden(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    gridPane.setEffect(null);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void openBatteryDialog(ActionEvent actionEvent) {
          try {
-             System.out.println(((Node)actionEvent.getSource()).getScene().getWindow());
+             gridPane.setEffect(new GaussianBlur());
              Stage stage = new Stage();
              Parent root = FXMLLoader.load(getClass().getResource("batteryDialog.fxml"));
              stage.setTitle("Battery Diagnostic");
@@ -220,7 +248,6 @@ public class RootLayoutController {
              stage.setScene(new Scene(root));
              stage.initModality(Modality.WINDOW_MODAL);
              stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-             gridPane.setEffect(new GaussianBlur());
              stage.show();
 
              /**
