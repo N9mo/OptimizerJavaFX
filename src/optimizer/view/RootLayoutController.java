@@ -93,6 +93,7 @@ public class RootLayoutController {
         batteryGauge.setAnimationDuration(10000);
         batteryGauge.setTitle("");
         batteryGauge.setUnit("%");
+        batteryGauge.setUnitColor(Color.GRAY);
         batteryGauge.setDecimals(0);
         batteryGauge.setBarBackgroundColor(Color.rgb(229, 237, 255));
         batteryGauge.setValueColor(Color.GRAY);
@@ -134,6 +135,7 @@ public class RootLayoutController {
         gauge1.setAnimationDuration(10000);
         gauge1.setTitle("");
         gauge1.setUnit("%");
+        gauge1.setUnitColor(Color.GRAY);
         gauge1.setDecimals(0);
         gauge1.setBarBackgroundColor(Color.rgb(229, 237, 255));
         gauge1.setValueColor(Color.GRAY);
@@ -158,6 +160,7 @@ public class RootLayoutController {
         gauge2.setAnimationDuration(10000);
         gauge2.setTitle("");
         gauge2.setUnit("%");
+        gauge2.setUnitColor(Color.GRAY);
         gauge2.setDecimals(0);
         gauge2.setBarBackgroundColor(Color.rgb(229, 237, 255));
         gauge2.setValueColor(Color.GRAY);
