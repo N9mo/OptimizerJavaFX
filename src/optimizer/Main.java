@@ -135,7 +135,7 @@ public class Main extends Application {
         Pane layout = new Pane();
         layout.getChildren().addAll(username, password, loginBtn, cancelBtn, ivDuck, loginErrorLabel);
         Scene scene = new Scene(layout);
-        layout.getStylesheets().add(this.getClass().getResource("/style/dark.css").toExternalForm());
+        layout.getStylesheets().add(this.getClass().getResource("style/dark.css").toExternalForm());
 
         //username.setFocusTraversable(false);
         //password.setFocusTraversable(false);

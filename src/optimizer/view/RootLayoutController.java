@@ -74,7 +74,7 @@ public class RootLayoutController {
     *//**
      * Вызывается главным приложением, которое даёт на себя ссылку.
      *
-     * @param mainApp
+     * @param
      *//*
     public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
@@ -199,33 +199,6 @@ public class RootLayoutController {
             stage.show();
 /**
  * отменяет блюр основного окна после закрітия batteryDialog * */
-            stage.setOnHidden(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    gridPane.setEffect(null);
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void openFinderDockDialog(ActionEvent actionEvent) {
-        try {
-            gridPane.setEffect(new GaussianBlur());
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("finderDockDialog.fxml"));
-            stage.setTitle("Finder/Dock fixer");
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-            stage.show();
-
-            /**
- * отменяет блюр основного окна после закрітия batteryDialog *
- */
             stage.setOnHidden(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {
