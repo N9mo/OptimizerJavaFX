@@ -2,7 +2,6 @@ package optimizer.Controller;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 public class PingIt {
 
@@ -18,12 +17,12 @@ public class PingIt {
             // reading output stream of the command
             if (count==0 && (s = inputStream.readLine()) != null) {
                 //System.out.println("Website is up and running.");
-                result ="Website is up and running.";
+                result ="Website appears to be functioning";
                 ++count;
             }
             else{
                 //System.out.println("ERROR");
-                result ="ERROR";
+                result ="Website does not appear to be working";
             }
         } catch (Exception e) {
             e.printStackTrace();
