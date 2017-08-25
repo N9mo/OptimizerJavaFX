@@ -59,10 +59,14 @@ public class BatteryDialogController {
      */
     @FXML
     private void initialize() {
+        Battery bat = new Battery();
         BatteryController batteryController = new BatteryController();
-        batteryController.initBatTest();
-        batteryController.showBatInfoTest();
-        HashMap <String,Double> map = batteryController.showBatInfoTest();
+
+        //batteryController.initBatt(batteryController.getBattInfo()); //add for Mac
+        batteryController.initBatTest();                               //test
+
+        //batteryController.showBatInfoTest();
+        //HashMap <String,Double> map = batteryController.showBatInfoTest();
 
         /*energyDesign.setText("Energy Design: ");
         energyWhenFull.setText("EnergyWhenFull: ");
@@ -70,15 +74,15 @@ public class BatteryDialogController {
         energyCycle.setText("EnergyCycle: " );
         energyDecayed.setText("EnergyDecayed: ");*/
 
-        energyDesignValue.setText((map.get("EnergyDesign")).intValue() + " mAh");
-        energyWhenFullValue.setText((map.get("EnergyWhenFull")).intValue() + " mAh");
-        energyCurrentValue.setText((map.get("EnergyCurrent")).intValue() + " mAh");
-        energyCycleValue.setText((map.get("EnergyCycle" )).intValue() + " cycles");
-        energyDecayedValue.setText((map.get("EnergyDecayed")).intValue() + " %");
+        energyDesignValue.setText((int)bat.getEnergyDesign() + " mAh");
+        energyWhenFullValue.setText((int)bat.getEnergyWhenFull() + " mAh");
+        energyCurrentValue.setText((int)bat.getEnergyCurrent() + " mAh");
+        energyCycleValue.setText((int)bat.getEnergyCycle() + " cycles");
+        energyDecayedValue.setText((int)bat.getEnergyDecayed() + " %");
 
-        energyDesigneBar.setProgress((map.get("EnergyDesign")));
-        energyWhenFullBar.setProgress((map.get("EnergyWhenFull"))/(map.get("EnergyDesign")));
-        energyCurrentBar.setProgress((map.get("EnergyCurrent"))/(map.get("EnergyDesign")));
+        energyDesigneBar.setProgress(bat.getEnergyDesign());
+        energyWhenFullBar.setProgress(bat.getEnergyWhenFull()/bat.getEnergyDesign());
+        energyCurrentBar.setProgress(bat.getEnergyCurrent()/bat.getEnergyDesign());
 
 
 
@@ -136,7 +140,7 @@ public class BatteryDialogController {
     }
 
 
-    public void showBatInfo() {
+  /*  public void showBatInfo() {
 
         BatteryController batteryController = new BatteryController();
         batteryController.initBatTest();
@@ -148,7 +152,7 @@ public class BatteryDialogController {
         energyCurrentValue.setText(String.valueOf(map.get("EnergyCurrent")));
         energyCycleValue.setText(String.valueOf(map.get("EnergyCycle" )));
         energyDecayedValue.setText(String.valueOf(map.get("EnergyDecayed")));
-    }
+    }*/
 
     public void actionClose(ActionEvent actionEvent) {
         Node source = (Node)  actionEvent.getSource();

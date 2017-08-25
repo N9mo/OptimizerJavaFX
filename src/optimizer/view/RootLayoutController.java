@@ -117,11 +117,14 @@ public class RootLayoutController {
         batteryGauge.relocate(230,80);
         batStatPane.getChildren().addAll(batteryGauge);
 
+        Battery bat = new Battery();
         BatteryController batteryController = new BatteryController();
-        batteryController.initBatTest();
-        batteryController.showBatInfoTest();
-        HashMap<String,Double> map = batteryController.showBatInfoTest();
-        batteryGauge.setValue((map.get("EnergyCurrent"))/(map.get("EnergyDesign"))*100);
+
+        //batteryController.initBatt(batteryController.getBattInfo()); //add for Mac
+        batteryController.initBatTest();                               //test
+
+        //HashMap<String,Double> map = batteryController.showBatInfoTest();
+        batteryGauge.setValue(bat.getEnergyCurrent()/bat.getEnergyDesign()*100);
 
 
 

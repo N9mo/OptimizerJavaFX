@@ -48,7 +48,7 @@ public class Main extends Application {
         //show loginWindow
         //windowMain = primaryStage;
         root.setEffect(new GaussianBlur());
-        showLoginWindow();
+       // showLoginWindow();
         root.setEffect(null);
     }
 

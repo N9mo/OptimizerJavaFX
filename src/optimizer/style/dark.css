@@ -8,16 +8,21 @@
 
 
 
-
-
-/*.button {
-    -fx-background-color: linear-gradient(to bottom, -fx-base,-fx-base +30%);
-}*/
-
 /*
+
+
+.button {
+    -fx-background-color: linear-gradient(to bottom, -fx-base,-fx-base +30%);
+}
+
+
 .button:hover {
     -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
     -fx-color: -fx-hover-base;
+}
+.button:pressed {
+    -fx-background-color: white;
+    -fx-text-fill: #1d1d1d;
 }
 */
 

@@ -9,11 +9,11 @@ import java.io.InputStreamReader;
  */
 public class Battery {
 
-    private static double energyDesign=17;
-    private static double energyWhenFull=0;
-    private static double energyCurrent=0;
-    private static double energyCycle=0;
-    private static double energyDecayed=0;
+    private static double energyDesign;
+    private static double energyWhenFull;
+    private static double energyCurrent;
+    private static double energyCycle;
+    private static double energyDecayed;
 
     public double getEnergyDesign() {
         return energyDesign;

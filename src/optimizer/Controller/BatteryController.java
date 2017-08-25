@@ -44,28 +44,28 @@ public class BatteryController {
     public void initBatt(String battInfo) {
         String[] array = battInfo.split("; Cap=");
         String[] array2 = array[1].split(": FCC=");
-        bat.setEnergyCurrent(Integer.parseInt(array2[0]));
+        bat.setEnergyCurrent(Double.parseDouble(array2[0]));
         System.out.println("Energy Current: " + bat.getEnergyCurrent() + " mAh");//Test
 
         String[] array3 = array2[1].split("; Design=");
-        bat.setEnergyWhenFull(Integer.parseInt(array3[0]));
+        bat.setEnergyWhenFull(Double.parseDouble(array3[0]));
         System.out.println("Energy When Full: " + bat.getEnergyWhenFull() + " mAh");//Test
 
         String[] array4 = array3[1].split("; Time=");
-        bat.setEnergyDesign((Integer.parseInt(array4[0])));
+        bat.setEnergyDesign((Double.parseDouble(array4[0])));
         System.out.println("Energy Design: " + bat.getEnergyDesign() + " mAh");//Test
 
         String[] array5 = array4[1].split("; Cycles=");
         String[] array6 = array5[1].split("; Location=");
-        bat.setEnergyCycle(Integer.parseInt(array6[0]));
+        bat.setEnergyCycle(Double.parseDouble(array6[0]));
         System.out.println("Energy Cycle: " + bat.getEnergyCycle());//Test
 
-        bat.setEnergyDecayed((int) ((bat.getEnergyWhenFull()/bat.getEnergyDesign() - 1) * 100));
+        bat.setEnergyDecayed((double) ((bat.getEnergyWhenFull()/bat.getEnergyDesign() - 1) * 100));
     }
 
 
 
-    public HashMap<String, Double> showBatInfoTest(){
+    /*public HashMap<String, Double> showBatInfoTest(){
         HashMap <String , Double > map = new HashMap<>();
         map.put("EnergyCurrent", bat.getEnergyCurrent());
         map.put("EnergyWhenFull", bat.getEnergyWhenFull());
@@ -75,7 +75,7 @@ public class BatteryController {
         System.out.println(map);
 
         return map;
-    }
+    }*/
 
 
     public void initBatTest() {
