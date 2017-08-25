@@ -120,13 +120,10 @@ public class RootLayoutController {
         Battery bat = new Battery();
         BatteryController batteryController = new BatteryController();
 
-        //batteryController.initBatt(batteryController.getBattInfo()); //add for Mac
-        batteryController.initBatTest();                               //test
+        batteryController.initBatt(batteryController.getBattInfo()); //add for Mac
+        //batteryController.initBatTest();                               //test
 
-        //HashMap<String,Double> map = batteryController.showBatInfoTest();
         batteryGauge.setValue(bat.getEnergyCurrent()/bat.getEnergyDesign()*100);
-
-
 
         Gauge gauge1 = new Gauge();
         gauge1.setMaxSize(170,170);
@@ -178,15 +175,10 @@ public class RootLayoutController {
         gauge2.setTickLabelColor(Color.rgb(151, 151, 151));
         gauge2.setTickMarkColor(Color.BLACK);
         gauge2.setTickLabelOrientation(TickLabelOrientation.ORTHOGONAL);
-
-
         gauge1.relocate(30,80);
         gauge2.relocate(230,80);
         storCapPane.getChildren().addAll(gauge1, gauge2);
-
-
     }
-
 
     public void openFinderDockDialog(ActionEvent actionEvent) {
         try {
