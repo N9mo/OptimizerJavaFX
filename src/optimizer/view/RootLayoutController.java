@@ -120,8 +120,8 @@ public class RootLayoutController {
         Battery bat = new Battery();
         BatteryController batteryController = new BatteryController();
 
-        batteryController.initBatt(batteryController.getBattInfo()); //add for Mac
-        //batteryController.initBatTest();                               //test
+        //batteryController.initBatt(batteryController.getBattInfo()); //add for Mac
+        batteryController.initBatTest();                               //test
 
         batteryGauge.setValue(bat.getEnergyCurrent()/bat.getEnergyDesign()*100);
 

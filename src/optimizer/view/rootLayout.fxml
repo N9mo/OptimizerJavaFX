@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="optimizer.view.RootLayoutController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="optimizer.view.RootLayoutController">
    <children>
       <GridPane fx:id="gridPane" prefHeight="768.0" prefWidth="1024.0" styleClass="root" stylesheets="@../style/dark.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -36,7 +36,7 @@
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>
-                  <Text fx:id="optDescriptionProcess" fill="#616161" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Increase your performance">
+                  <Text fx:id="optDescriptionProcess" disable="true" fill="#616161" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Increase your performance">
                      <font>
                         <Font name="Catamaran SemiBold" size="15.0" />
                      </font>
@@ -52,7 +52,7 @@
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>
-                  <Text fx:id="wifiDescriptionProcess" fill="#616161" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Having trouble connecting over Wi-Fi? Fix it with this">
+                  <Text fx:id="wifiDescriptionProcess" disable="true" fill="#616161" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Having trouble connecting over Wi-Fi? Fix it with this">
                      <font>
                         <Font name="Catamaran SemiBold" size="15.0" />
                      </font>
@@ -68,12 +68,12 @@
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>
-                  <Text fill="#616161" layoutX="98.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hard Drive 1">
+                  <Text disable="true" fill="#616161" layoutX="98.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hard Drive 1">
                      <font>
                         <Font name="Catamaran SemiBold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="#616161" layoutX="291.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hard Drive 2">
+                  <Text disable="true" fill="#616161" layoutX="291.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hard Drive 2">
                      <font>
                         <Font name="Catamaran SemiBold" size="15.0" />
                      </font>
@@ -88,7 +88,7 @@
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>
-                  <Text fx:id="webDescriptionProcess" fill="#616161" layoutX="14.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Find out if a website is up or down for everyone; or just you.">
+                  <Text fx:id="webDescriptionProcess" disable="true" fill="#616161" layoutX="14.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Find out if a website is up or down for everyone; or just you.">
                      <font>
                         <Font name="Catamaran SemiBold" size="15.0" />
                      </font>
@@ -103,7 +103,7 @@
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>
-                  <Text fx:id="finderDescriptionProcess" fill="#616161" layoutX="14.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For use when upper or lower bars are not displaying properly">
+                  <Text fx:id="finderDescriptionProcess" disable="true" fill="#616161" layoutX="14.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For use when upper or lower bars are not displaying properly">
                      <font>
                         <Font name="Catamaran SemiBold" size="15.0" />
                      </font>
