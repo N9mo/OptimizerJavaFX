@@ -22,8 +22,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Pair;
+import optimizer.Controller.Storage;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 
 public class Main extends Application {
@@ -44,6 +47,11 @@ public class Main extends Application {
         //scene.getStylesheets().add("style/dark.css");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
+
+
+
 
         //show loginWindow
         //windowMain = primaryStage;

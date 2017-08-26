@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.*;
 import javafx.scene.input.MouseEvent;
@@ -22,11 +23,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
+import javafx.util.Pair;
 import optimizer.Controller.BatteryController;
-import optimizer.Controller.DockController;
-import optimizer.Controller.FinderController;
+import optimizer.Controller.Storage;
 import optimizer.Main;
 import optimizer.model.Battery;
 
@@ -62,6 +62,16 @@ public class RootLayoutController {
     protected GridPane gridPane;
     @FXML
     private Button optimizerButton;
+    @FXML
+    private Text storage1Label;
+    @FXML
+    private Text storage2Label;
+
+
+    Gauge gauge1;
+    Gauge gauge2;
+
+    HashMap <Integer, Pair<String, Pair<Long,Long>>> resulStorageMap1;
 
     /*public GridPane getGridPane() {
         return gridPane;
@@ -125,7 +135,7 @@ public class RootLayoutController {
 
         batteryGauge.setValue(bat.getEnergyCurrent()/bat.getEnergyDesign()*100);
 
-        Gauge gauge1 = new Gauge();
+        gauge1 = new Gauge();
         gauge1.setMaxSize(170,170);
         gauge1.setMinValue(0);
         gauge1.setMaxValue(100);
@@ -135,7 +145,7 @@ public class RootLayoutController {
         gauge1.setAnimated(true);
         gauge1.setAnimationDuration(10000);
         gauge1.setTitle("");
-        gauge1.setUnit("%");
+        gauge1.setUnit("MB used");
         gauge1.setUnitColor(Color.GRAY);
         gauge1.setDecimals(0);
         gauge1.setBarBackgroundColor(Color.rgb(229, 237, 255));
@@ -150,7 +160,7 @@ public class RootLayoutController {
         gauge1.setTickMarkColor(Color.BLACK);
         gauge1.setTickLabelOrientation(TickLabelOrientation.ORTHOGONAL);
 
-        Gauge gauge2 = new Gauge();
+        gauge2 = new Gauge();
         gauge2.setMaxSize(170,170);
         gauge2.setMinValue(0);
         gauge2.setMaxValue(100);
@@ -158,9 +168,9 @@ public class RootLayoutController {
         gauge2.setSkin(new FlatSkin(gauge2));
         //gauge2.setAutoScale(true);
         gauge2.setAnimated(true);
-        gauge2.setAnimationDuration(10000);
+        gauge2.setAnimationDuration(10000L);
         gauge2.setTitle("");
-        gauge2.setUnit("%");
+        gauge2.setUnit("MB used");
         gauge2.setUnitColor(Color.GRAY);
         gauge2.setDecimals(0);
         gauge2.setBarBackgroundColor(Color.rgb(229, 237, 255));
@@ -177,7 +187,35 @@ public class RootLayoutController {
         gauge2.setTickLabelOrientation(TickLabelOrientation.ORTHOGONAL);
         gauge1.relocate(30,80);
         gauge2.relocate(230,80);
+        gauge2.setDisable(true);
         storCapPane.getChildren().addAll(gauge1, gauge2);
+
+        getStorageInfo(null);
+    }
+
+    public void openWebSiteDialog(ActionEvent actionEvent) {
+        try {
+
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("webSiteDialog.fxml"));
+            stage.setTitle("Website status check");
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            gridPane.setEffect(new GaussianBlur());
+            stage.show();
+/**
+ * отменяет блюр основного окна после закрітия batteryDialog * */
+            stage.setOnHidden(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    gridPane.setEffect(null);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void openFinderDockDialog(ActionEvent actionEvent) {
@@ -272,4 +310,30 @@ public class RootLayoutController {
 
     }
 
+    public void getStorageInfo(ActionEvent actionEvent) {
+
+        try {
+            resulStorageMap1 = Storage.run();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+            System.out.println(resulStorageMap1.get(1).getKey());
+            System.out.println(resulStorageMap1.get(1).getValue().getKey());
+            System.out.println(resulStorageMap1.get(1).getValue().getValue());
+            gauge1.setValue(resulStorageMap1.get(1).getValue().getValue());
+            gauge1.setMaxValue(resulStorageMap1.get(1).getValue().getKey());
+            storage1Label.setText(resulStorageMap1.get(1).getKey());
+
+            if (resulStorageMap1.size()!=0) {
+                System.out.println(resulStorageMap1.get(2).getKey());
+                System.out.println(resulStorageMap1.get(2).getValue().getKey());
+                System.out.println(resulStorageMap1.get(2).getValue().getValue());
+                gauge2.setValue(resulStorageMap1.get(2).getValue().getValue());
+                gauge2.setMaxValue(resulStorageMap1.get(2).getValue().getKey());
+                gauge2.setDisable(false);
+                storage2Label.setText(resulStorageMap1.get(2).getKey());
+            }
+
+    }
 }
