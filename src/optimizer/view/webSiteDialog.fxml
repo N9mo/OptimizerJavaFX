@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/dark.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="optimizer.view.WebSiteDialogController">
    <children>
-      <Button fx:id="webButton" layoutX="38.0" layoutY="138.0" mnemonicParsing="false" onAction="#pingIp" prefHeight="100.0" prefWidth="200.0" text="Button">
+      <Button fx:id="webButton" layoutX="38.0" layoutY="138.0" mnemonicParsing="false" onAction="#pingIp" prefHeight="100.0" prefWidth="200.0" text="Ping IP">
          <font>
             <Font name="Catamaran Bold" size="20.0" />
          </font>
@@ -25,5 +24,6 @@
             <Font name="Catamaran SemiBold" size="15.0" />
          </font>
       </Label>
+      <Button fx:id="gotItWebSiteLayer" layoutX="365.0" layoutY="346.0" mnemonicParsing="false" onAction="#closeWindow" text="Got it" />
    </children>
 </AnchorPane>
