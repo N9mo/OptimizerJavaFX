@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.*;
 import javafx.scene.input.MouseEvent;
@@ -26,7 +25,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Pair;
 import optimizer.Controller.BatteryController;
-import optimizer.Controller.Storage;
+import optimizer.Controller.StorageController;
 import optimizer.Main;
 import optimizer.model.Battery;
 
@@ -313,7 +312,7 @@ public class RootLayoutController {
     public void getStorageInfo(ActionEvent actionEvent) {
 
         try {
-            resulStorageMap1 = Storage.run();
+            resulStorageMap1 = StorageController.run();
         } catch (IOException e) {
             e.printStackTrace();
         }

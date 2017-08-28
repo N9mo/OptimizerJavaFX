@@ -3,7 +3,7 @@ package optimizer.Controller;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class PingIt {
+public class WebsiteCheckController {
 
     public static String runSystemCommand(String site) {
         int count = 0,x=0;

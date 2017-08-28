@@ -7,7 +7,7 @@ import java.nio.file.FileStore;
 import java.nio.file.FileSystems;
 import java.util.HashMap;
 
-public class Storage {
+public class StorageController {
     public static HashMap run () throws IOException {
         HashMap<Integer, Pair<String, Pair<Long,Long>>> resulStorageMap = new HashMap<Integer, Pair<String, Pair<Long,Long>>>();
         int counter = 0;

@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import optimizer.Controller.PingIt;
+import optimizer.Controller.WebsiteCheckController;
 
 public class WebSiteDialogController {
     @FXML
@@ -16,7 +16,7 @@ public class WebSiteDialogController {
     private Label webLabel2;
 
     public void pingIp(ActionEvent actionEvent) {
-        String result = PingIt.runSystemCommand(webTextField.getText());
+        String result = WebsiteCheckController.runSystemCommand(webTextField.getText());
         if (result.equals("Website does not appear to be working")) {
             webLabel2.setTextFill(Color.ORANGE);
         }

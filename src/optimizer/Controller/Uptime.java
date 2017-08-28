@@ -45,9 +45,9 @@ public class Uptime {
 
     public static void run(String[] args) {
         //System.out.println("What is the website you want to check?");
-        //Scanner PingIt = new Scanner(System.in);
+        //Scanner WebsiteCheckController = new Scanner(System.in);
         //String website;
-        //website = PingIt.next();
+        //website = WebsiteCheckController.next();
         //String ip = website;
 
 
