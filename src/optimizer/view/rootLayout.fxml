@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.ProgressBar?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
@@ -13,26 +14,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="optimizer.view.RootLayoutController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../style/dark.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="optimizer.view.RootLayoutController">
    <children>
-      <GridPane fx:id="gridPane" prefHeight="768.0" prefWidth="1024.0" styleClass="root" stylesheets="@../style/dark.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane fx:id="gridPane" layoutY="136.0" prefHeight="632.0" prefWidth="1024.0" styleClass="root" stylesheets="@../style/dark.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="136.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="641.0" minWidth="10.0" prefWidth="513.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="539.0" minWidth="10.0" prefWidth="511.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="170.0" minHeight="160.0" prefHeight="135.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="150.0" minHeight="130.0" prefHeight="25.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="282.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="321.0" minHeight="115.0" prefHeight="152.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="329.0" minHeight="10.0" prefHeight="292.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="160.0" minHeight="170.0" prefHeight="283.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane fx:id="optPerfPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Pane fx:id="optPerfPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="124.0" prefWidth="462.0" GridPane.columnIndex="1">
                <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="40.0" top="10.0" />
+                  <Insets bottom="10.0" left="10.0" right="40.0" top="20.0" />
                </GridPane.margin>
                <children>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="119.0" prefWidth="461.0" text="Optimize Performance">
+                  <Button fx:id="optimizerButton" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openOptimizerDialog" prefHeight="119.0" prefWidth="462.0" text="Optimize Performance">
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>
@@ -43,12 +43,12 @@
                   </Text>
                </children>
             </Pane>
-            <Pane fx:id="wifiPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <Pane fx:id="wifiPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="124.0" prefWidth="462.0">
                <GridPane.margin>
-                  <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
+                  <Insets bottom="10.0" left="40.0" right="10.0" top="20.0" />
                </GridPane.margin>
                <children>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="119.0" prefWidth="463.0" text="Fix Wi-Fi">
+                  <Button alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="119.0" prefWidth="462.0" text="Fix Wi-Fi">
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>
@@ -59,12 +59,12 @@
                   </Text>
                </children>
             </Pane>
-            <Pane fx:id="storCapPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Pane fx:id="storCapPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="462.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="40.0" top="10.0" />
                </GridPane.margin>
                <children>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#getStorageInfo" prefHeight="270.0" prefWidth="461.0" text="Storage Capacity">
+                  <Button alignment="TOP_LEFT" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getStorageInfo" prefHeight="270.0" prefWidth="462.0" text="Storage Capacity">
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>
@@ -79,12 +79,12 @@
                      </font>
                   </Text>
                </children></Pane>
-            <Pane fx:id="webStatPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <Pane fx:id="webStatPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="462.0" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="40.0" left="40.0" right="10.0" top="10.0" />
                </GridPane.margin>
                <children>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#openWebSiteDialog" prefHeight="119.0" prefWidth="463.0" text="Website Status Check">
+                  <Button alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openWebSiteDialog" prefHeight="120.0" prefWidth="462.0" text="Website Status Check">
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>
@@ -94,12 +94,12 @@
                      </font>
                   </Text>
                </children></Pane>
-            <Pane fx:id="finderDockPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Pane fx:id="finderDockPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="462.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="40.0" left="10.0" right="40.0" top="10.0" />
                </GridPane.margin>
                <children>
-                  <Button fx:id="finderDockbutton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#openFinderDockDialog" prefHeight="119.0" prefWidth="461.0" text="Finder/Dock Fixer">
+                  <Button fx:id="finderDockbutton" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openFinderDockDialog" prefHeight="120.0" prefWidth="461.0" text="Finder/Dock Fixer">
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>
@@ -109,40 +109,12 @@
                      </font>
                   </Text>
                </children></Pane>
-            <Pane fx:id="optimizingPane" prefWidth="662.0" GridPane.columnSpan="2">
-               <GridPane.margin>
-                  <Insets bottom="10.0" left="40.0" right="40.0" top="40.0" />
-               </GridPane.margin>
-               <children>
-                  <Button fx:id="optmizingButton" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="119.0" prefWidth="944.0" text="Optimizing Performance">
-                     <font>
-                        <Font name="Catamaran Bold" size="20.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Button>
-                  <Text layoutX="891.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="25%">
-                     <font>
-                        <Font name="Roboto Bold" size="20.0" />
-                     </font></Text>
-                  <ProgressBar fx:id="progressBar" layoutX="17.0" layoutY="62.0" prefHeight="20.0" prefWidth="909.0" progress="0.81" />
-                  <Label layoutX="399.0" layoutY="32.0" text="This block will be delete" textFill="#f50303" visible="false">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
-
-                  
-                  
-               </children>
-            </Pane>
-            <Pane fx:id="batStatPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <Pane fx:id="batStatPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="462.0" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
                </GridPane.margin>
                <children>
-                  <Button fx:id="bateryButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#openBatteryDialog" onMouseClicked="#showGauge" prefHeight="270.0" prefWidth="463.0" text="Battery Status">
+                  <Button fx:id="bateryButton" alignment="TOP_LEFT" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openBatteryDialog" onMouseClicked="#showGauge" prefHeight="270.0" prefWidth="462.0" text="Battery Status">
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>
@@ -161,5 +133,14 @@
             </Pane>
          </children>
       </GridPane>
+      <BorderPane layoutX="-1.0" prefHeight="150.0" prefWidth="1024.0">
+         <center>
+            <ImageView fitHeight="124.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../file/duck-icon.png" />
+               </image>
+            </ImageView>
+         </center>
+      </BorderPane>
    </children>
 </AnchorPane>

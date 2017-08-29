@@ -335,4 +335,28 @@ public class RootLayoutController {
             }
 
     }
+
+    public void openOptimizerDialog(ActionEvent actionEvent) {
+        try {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("optimizerDialog.fxml"));
+            stage.setTitle("Optimizer");
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            gridPane.setEffect(new GaussianBlur());
+            stage.show();
+/**
+ * отменяет блюр основного окна после закрітия batteryDialog * */
+            stage.setOnHidden(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    gridPane.setEffect(null);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

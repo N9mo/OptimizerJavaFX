@@ -116,7 +116,7 @@ public class MemoryController {
      *
      * @param password
      */
-    public static void cacheCleaner(String password) {
+    public static void cacheStorageCleaner(String password) {
         Process process = null;
         String[] cacheClean = {"/bin/bash", "-c", "echo " + password + " | sudo rm -rf ~/Library/Caches/*"};
         try {
@@ -127,7 +127,7 @@ public class MemoryController {
         process.destroy();
     }
 
-    public static void cacheCleaner2(String password) {
+    public static void cacheStorageCleaner2(String password) {
         Process process = null;
         String[] cacheClean = {"/bin/bash", "-c", "echo " + password + " | sudo rm -rf /Library/Caches/*"};
         try {
