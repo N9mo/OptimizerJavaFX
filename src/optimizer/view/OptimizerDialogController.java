@@ -13,6 +13,7 @@ public class OptimizerDialogController {
 
     public void memoryCashClean(ActionEvent actionEvent) {
         OptimizerController.cachedMemoryCleaner(account.getPassword());
+        System.out.println("Password" + account.getPassword());
     }
 
     public void storageCashClean(ActionEvent actionEvent) {

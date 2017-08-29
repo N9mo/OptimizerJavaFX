@@ -112,7 +112,7 @@ public class Main extends Application {
         loginBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (username.getText().equals("user") && password.getText().equals("berserker")) {
+                if (username.getText().equals("user") && password.getText().equals("admin")) {
                     Account account = new Account();
                     account.setPassword(password.getText());
                     account.setLogin(username.getText());
