@@ -13,13 +13,7 @@ public class BatteryController {
 
     private Battery bat = new Battery();
 
-    public void setBat(){
-        initBatt(getBattInfo());
-    }
-
-        //get raw String with batt info
-
-
+    //get raw String with batt info
     public String getBattInfo() {
         Process p = null;
         String outputStringTemp = "";
@@ -60,7 +54,7 @@ public class BatteryController {
         bat.setEnergyCycle(Double.parseDouble(array6[0]));
         System.out.println("Energy Cycle: " + bat.getEnergyCycle());//Test
 
-        bat.setEnergyDecayed((double) ((bat.getEnergyWhenFull()/bat.getEnergyDesign() - 1) * 100));
+        bat.setEnergyDecayed(((bat.getEnergyWhenFull()/bat.getEnergyDesign() - 1) * 100));
     }
 
 
@@ -79,12 +73,12 @@ public class BatteryController {
 
 
     public void initBatTest() {
-        bat.setEnergyCurrent(3200);
-        bat.setEnergyWhenFull(3800);
-        bat.setEnergyDesign(4000);
-        bat.setEnergyCycle(150);
-        bat.setEnergyDecayed((((1.0 - Double.valueOf(bat.getEnergyWhenFull())/Double.valueOf(bat.getEnergyDesign()) ) * 100)));
-        System.out.println(((((double)(1 -(bat.getEnergyWhenFull()/bat.getEnergyDesign() ))))));
+        bat.setEnergyCurrent(3200.0);
+        bat.setEnergyWhenFull(3800.0);
+        bat.setEnergyDesign(4000.0);
+        bat.setEnergyCycle(150.0);
+        bat.setEnergyDecayed( (bat.getEnergyWhenFull()/Double.valueOf(bat.getEnergyDesign() ) - 1) * 100);
+
 
 
     }

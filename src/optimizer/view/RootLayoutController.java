@@ -245,7 +245,7 @@ public class RootLayoutController {
 
     public void openBatteryDialog(ActionEvent actionEvent) {
          try {
-             gridPane.setEffect(new GaussianBlur());
+
              Stage stage = new Stage();
              Parent root = FXMLLoader.load(getClass().getResource("batteryDialog.fxml"));
              stage.setTitle("Battery Diagnostic");
@@ -253,6 +253,7 @@ public class RootLayoutController {
              stage.setScene(new Scene(root));
              stage.initModality(Modality.WINDOW_MODAL);
              stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+             gridPane.setEffect(new GaussianBlur());
              stage.show();
 
              /**

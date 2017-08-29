@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="optimizer.view.OptimizerDialogController">
    <children>
       <GridPane layoutX="212.0" layoutY="145.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -23,15 +22,15 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text="Memory cash clean" />
-            <Button mnemonicParsing="false" text="Storage cash clean" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="DNS cash clean" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="Trash clean" GridPane.rowIndex="3" />
+            <Button fx:id="memoryCashCleanButton" mnemonicParsing="false" onAction="#memoryCashClean" text="Memory cash clean" />
+            <Button fx:id="storageCashCleanButton" mnemonicParsing="false" onAction="#storageCashClean" text="Storage cash clean" GridPane.rowIndex="1" />
+            <Button fx:id="dnsCashCleanButton" mnemonicParsing="false" onAction="#dnsCashClean" text="DNS cash clean" GridPane.rowIndex="2" />
+            <Button fx:id="trashCleanButton" mnemonicParsing="false" onAction="#trashClean" text="Trash clean" GridPane.rowIndex="3" />
             <Label fx:id="memoryCashCleanLabel" text="Label" GridPane.columnIndex="1" />
             <Label fx:id="storageCashCleanLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="dnsCashCleanLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="trashCleanLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" text="Got it" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="gotItOptimizerLayer" mnemonicParsing="false" onAction="#actionClose" text="Got it" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>

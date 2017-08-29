@@ -19,6 +19,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import optimizer.model.Account;
 
 import java.io.IOException;
 
@@ -35,7 +36,7 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         FXMLLoader loader = new FXMLLoader();
         Parent root = loader.load(getClass().getResource("view/rootLayout.fxml"));
-        primaryStage.setTitle("MemoryController");
+        primaryStage.setTitle("OptimizerController");
         Scene scene = new Scene(root, 1024, 768);
         primaryStage.setResizable(false);
         //scene.getStylesheets().add("style/dark.css");
@@ -111,7 +112,10 @@ public class Main extends Application {
         loginBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (username.getText().equals("user") && password.getText().equals("admin")) {
+                if (username.getText().equals("user") && password.getText().equals("berserker")) {
+                    Account account = new Account();
+                    account.setPassword(password.getText());
+                    account.setLogin(username.getText());
                     window.close();
                 } else {
                     loginErrorLabel.setText("          Incorrect username or password\n                       Please try again");

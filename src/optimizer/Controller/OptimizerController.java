@@ -6,7 +6,7 @@ import java.io.*;
  * Created by nemo on 13.05.17.
  */
 
-public class MemoryController {
+public class OptimizerController {
 
     /**
      * For cachedMemoryCleaner we need to use “purge” command.

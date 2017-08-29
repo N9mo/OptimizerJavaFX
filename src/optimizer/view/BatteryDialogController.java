@@ -63,7 +63,7 @@ public class BatteryDialogController {
         BatteryController batteryController = new BatteryController();
 
         batteryController.initBatt(batteryController.getBattInfo()); //add for Mac
-
+        //batteryController.initBatTest();
         energyDesignValue.setText((int)bat.getEnergyDesign() + " mAh");
         energyWhenFullValue.setText((int)bat.getEnergyWhenFull() + " mAh");
         energyCurrentValue.setText((int)bat.getEnergyCurrent() + " mAh");
