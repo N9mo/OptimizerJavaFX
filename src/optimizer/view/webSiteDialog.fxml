@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/dark.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="optimizer.view.WebSiteDialogController">
    <children>
-      <Button fx:id="webButton" layoutX="38.0" layoutY="138.0" mnemonicParsing="false" onAction="#pingIp" prefHeight="100.0" prefWidth="200.0" text="Ping IP">
+      <Button fx:id="webButton" layoutX="38.0" layoutY="138.0" mnemonicParsing="false" onAction="#pingIp" prefHeight="100.0" prefWidth="200.0" text="Check Website">
          <font>
             <Font name="Catamaran Bold" size="20.0" />
          </font>
@@ -19,7 +19,7 @@
             <Font name="Catamaran SemiBold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="webLabel2" layoutX="267.0" layoutY="249.0" prefHeight="27.0" prefWidth="269.0">
+      <Label fx:id="webLabel2" layoutX="254.0" layoutY="249.0" prefHeight="27.0" prefWidth="339.0">
          <font>
             <Font name="Catamaran SemiBold" size="15.0" />
          </font>

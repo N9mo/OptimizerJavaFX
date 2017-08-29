@@ -330,7 +330,7 @@ public class RootLayoutController {
                 System.out.println(resulStorageMap1.get(2).getValue().getValue());
                 gauge2.setValue(resulStorageMap1.get(2).getValue().getValue());
                 gauge2.setMaxValue(resulStorageMap1.get(2).getValue().getKey());
-                gauge2.setDisable(false);
+                //gauge2.setDisable(false);
                 storage2Label.setText(resulStorageMap1.get(2).getKey());
             }
 

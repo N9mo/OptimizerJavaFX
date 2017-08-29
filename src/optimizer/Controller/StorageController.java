@@ -28,7 +28,9 @@ public class StorageController {
             Pair <String, Pair<Long,Long>> storageInfo = new Pair<>(store.toString(), storageValue);
             resulStorageMap.put(counter, storageInfo);
             //System.out.println(resulStorageMap);
+            System.out.println(resulStorageMap);
         }
         return resulStorageMap;
+
     }
 }
