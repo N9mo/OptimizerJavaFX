@@ -23,7 +23,11 @@ public class OptimizerDialogController {
     }
 
     public void trashClean(ActionEvent actionEvent) {
-        OptimizerController.trashCleaner();
+        try {
+            OptimizerController.runSudoCommand();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void actionClose(ActionEvent actionEvent) {
