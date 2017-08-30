@@ -8,6 +8,25 @@ import java.io.*;
 
 public class OptimizerController {
 
+    private static String password;
+    private static String login;
+
+    public static String getPassword() {
+        return password;
+    }
+
+    public static void setPassword(String password) {
+        OptimizerController.password = password;
+    }
+
+    public static String getLogin() {
+        return login;
+    }
+
+    public static void setLogin(String login) {
+        OptimizerController.login = login;
+    }
+
     /**
      * For cachedMemoryCleaner we need to use “purge” command.
      * The purge command forces disk and memory caches to be emptied, offering a ‘cold disk buffer cache’ which is
@@ -19,7 +38,7 @@ public class OptimizerController {
      * E.g. class can get psw from your UI classes and save to String psw when the application starts.
      * * @param password
      */
-    public static int cachedMemoryCleaner(String password) {
+    public static int cachedMemoryCleaner() {
         String outTemp = "";
         String outStart = "";
         String outFinish = "";
@@ -94,9 +113,9 @@ public class OptimizerController {
      * {trashCleaner}
      * Trash cleaning. Delete all files and folders from the Trash.
      *
-     * @param password
+     *
      */
-    public static void trashCleaner(String password) {
+    public static void trashCleaner() {
         Process process = null;
         String[] trashClean = {"/bin/bash", "-c", "echo " + password + " | sudo rm -rf ~/.Trash/*"};
         try {
@@ -114,9 +133,9 @@ public class OptimizerController {
      * of free space and speed up your Mac in the process.
      * Need to close all apps before and reboot system after execute these methods.
      *
-     * @param password
+     *
      */
-    public static void cacheStorageCleaner(String password) {
+    public static void cacheStorageCleaner() {
         Process process = null;
         String[] cacheClean = {"/bin/bash", "-c", "echo " + password + " | sudo rm -rf ~/Library/Caches/*"};
         try {
@@ -127,7 +146,7 @@ public class OptimizerController {
         process.destroy();
     }
 
-    public static void cacheStorageCleaner2(String password) {
+    public static void cacheStorageCleaner2() {
         Process process = null;
         String[] cacheClean = {"/bin/bash", "-c", "echo " + password + " | sudo rm -rf /Library/Caches/*"};
         try {
@@ -142,9 +161,9 @@ public class OptimizerController {
      * {cacheDNSCleaner}
      * DNS cache is old cache entries that translate internet domain  names
      * (example.com) into IP addresses on your Mac. Clear DNS cache regularly to make sure all websites work correctly.
-     * @param password
+     *
      */
-    public static void cacheDNSCleaner (String password) {
+    public static void cacheDNSCleaner () {
         Process process = null;
         String[] cacheClean = {"/bin/bash", "-c", "echo " + password + " | sudo dscacheutil -flushcache;sudo killall " +
                 "-HUP mDNSResponder;say cache flushed"};
@@ -183,7 +202,7 @@ public class OptimizerController {
     */
 
 
-    public static void removeApplication (String password, String appPath){
+    public static void removeApplication (String appPath){
         Process process = null;
         String[] rmAppCommand = {"/bin/bash", "-c", "echo " + password + " | sudo rm -rf " + appPath};
         try {

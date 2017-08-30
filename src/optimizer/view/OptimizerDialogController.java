@@ -11,22 +11,19 @@ public class OptimizerDialogController {
     Account account;
 
 
-    public void memoryCashClean(ActionEvent actionEvent) {
-        OptimizerController.cachedMemoryCleaner(account.getPassword());
-        System.out.println("Password" + account.getPassword());
+    public void memoryCashClean(ActionEvent actionEvent) { OptimizerController.cachedMemoryCleaner();
     }
 
     public void storageCashClean(ActionEvent actionEvent) {
-        OptimizerController.cacheStorageCleaner(account.getPassword());
-        OptimizerController.cacheStorageCleaner2(account.getPassword());
+        OptimizerController.cacheStorageCleaner();
+        OptimizerController.cacheStorageCleaner2();
     }
 
-    public void dnsCashClean(ActionEvent actionEvent) {
-        OptimizerController.cacheDNSCleaner(account.getPassword());
+    public void dnsCashClean(ActionEvent actionEvent) { OptimizerController.cacheDNSCleaner();
     }
 
     public void trashClean(ActionEvent actionEvent) {
-        OptimizerController.trashCleaner(account.getPassword());
+        OptimizerController.trashCleaner();
     }
 
     public void actionClose(ActionEvent actionEvent) {
