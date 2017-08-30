@@ -29,8 +29,6 @@ public class OptimizerDialogController {
 
     public void memoryCashClean(ActionEvent actionEvent) {
         OptimizerController.cachedMemoryCleaner();
-        memoryCashCleanProgress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
-        memoryCashCleanLabel.setText("progress");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -42,8 +40,6 @@ public class OptimizerDialogController {
 
     public void storageCashClean(ActionEvent actionEvent) {
         OptimizerController.cacheStorageCleaner();
-        storageCashCleanProgress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
-        storageCashCleanLabel.setText("progress");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -55,8 +51,6 @@ public class OptimizerDialogController {
 
     public void dnsCashClean(ActionEvent actionEvent) {
         OptimizerController.cacheDNSCleaner();
-        dnsCashCleanProgress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
-        dnsCashCleanLabel.setText("progress");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -72,10 +66,8 @@ public class OptimizerDialogController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        trashCleanProgress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
-        trashCleanLabel.setText("progress");
         try {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -4,25 +4,6 @@ import java.io.*;
 
 public class OptimizerController {
 
-   /* private static String password;
-    private static String login;
-
-    public static String getPassword() {
-        return password;
-    }
-
-    public static void setPassword(String password) {
-        OptimizerController.password = password;
-    }
-
-    public static String getLogin() {
-        return login;
-    }
-
-    public static void setLogin(String login) {
-        OptimizerController.login = login;
-    }*/
-
     /**
      * For cachedMemoryCleaner we need to use “purge” command.
      * The purge command forces disk and memory caches to be emptied, offering a ‘cold disk buffer cache’ which is
@@ -89,16 +70,14 @@ public class OptimizerController {
         return result;
     }
 
-
-
     /**
      * {trashCleaner}
      * Trash cleaning. Delete all files and folders from the Trash.
      */
     public static void trashCleaner() {
         Process process = null;
-        String[] trashClean = {"sh", "-c", "rm -rf ~/.Trash/*"};
-        String[] trashClean2 = {"sh", "-c", "rm -rf /Volumes/*/.Trashes"};
+        String[] trashClean = {"sh", "-c", "rm -Rf ~/.Trash/*"};
+        String[] trashClean2 = {"sh", "-c", "rm -Rf /Volumes/*/.Trashes"};
         try {
             process = Runtime.getRuntime().exec(trashClean);
         } catch (IOException e) {
@@ -115,8 +94,8 @@ public class OptimizerController {
      */
     public static void cacheStorageCleaner() {
         Process process = null;
-        String[] cacheClean = {"sh", "-c", "rm -rf ~/Library/Caches/*"};
-        String[] cacheClean1 = {"sh", "-c", "rm -rf /Library/Caches/*"};
+        String[] cacheClean = {"sh", "-c", "Rm -rf ~/Library/Caches/*"};
+        String[] cacheClean1 = {"sh", "-c", "Rm -rf /Library/Caches/*"};
         try {
             process = Runtime.getRuntime().exec(cacheClean);
         } catch (IOException e) {

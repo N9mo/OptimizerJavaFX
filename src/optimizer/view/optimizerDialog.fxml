@@ -46,10 +46,10 @@
             <Label fx:id="dnsCashCleanLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="trashCleanLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Button fx:id="gotItOptimizerLayer" mnemonicParsing="false" onAction="#actionClose" text="Got it" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ProgressBar fx:id="memoryCashCleanProgress" prefWidth="200.0" progress="0.0" GridPane.columnIndex="2" />
-            <ProgressBar fx:id="storageCashCleanProgress" prefWidth="200.0" progress="0.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <ProgressBar fx:id="dnsCashCleanProgress" prefWidth="200.0" progress="0.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <ProgressBar fx:id="trashCleanProgress" prefWidth="200.0" progress="0.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <ProgressBar fx:id="memoryCashCleanProgress" prefWidth="200.0" GridPane.columnIndex="2" />
+            <ProgressBar fx:id="storageCashCleanProgress" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ProgressBar fx:id="dnsCashCleanProgress" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <ProgressBar fx:id="trashCleanProgress" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>
