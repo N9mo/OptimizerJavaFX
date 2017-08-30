@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="optimizer.view.OptimizerDialogController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/dark.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="optimizer.view.OptimizerDialogController">
    <children>
       <GridPane layoutX="212.0" layoutY="145.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="200.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="439.0" minWidth="10.0" prefWidth="400.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="230.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="439.0" minWidth="10.0" prefWidth="134.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="439.0" minWidth="10.0" prefWidth="281.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -22,15 +25,31 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="memoryCashCleanButton" mnemonicParsing="false" onAction="#memoryCashClean" text="Memory cash clean" />
-            <Button fx:id="storageCashCleanButton" mnemonicParsing="false" onAction="#storageCashClean" text="Storage cash clean" GridPane.rowIndex="1" />
-            <Button fx:id="dnsCashCleanButton" mnemonicParsing="false" onAction="#dnsCashClean" text="DNS cash clean" GridPane.rowIndex="2" />
-            <Button fx:id="trashCleanButton" mnemonicParsing="false" onAction="#trashClean" text="Trash clean" GridPane.rowIndex="3" />
-            <Label fx:id="memoryCashCleanLabel" text="Label" GridPane.columnIndex="1" />
-            <Label fx:id="storageCashCleanLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="dnsCashCleanLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="trashCleanLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="memoryCashCleanButton" mnemonicParsing="false" onAction="#memoryCashClean" prefHeight="40.0" prefWidth="145.0" text="Memory cash clean">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="storageCashCleanButton" mnemonicParsing="false" onAction="#storageCashClean" prefHeight="40.0" prefWidth="145.0" text="Storage cash clean" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="dnsCashCleanButton" mnemonicParsing="false" onAction="#dnsCashClean" prefHeight="40.0" prefWidth="145.0" text="DNS cash clean" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="trashCleanButton" mnemonicParsing="false" onAction="#trashClean" prefHeight="40.0" prefWidth="145.0" text="Trash clean" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Button>
+            <Label fx:id="memoryCashCleanLabel" GridPane.columnIndex="1" />
+            <Label fx:id="storageCashCleanLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="dnsCashCleanLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="trashCleanLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Button fx:id="gotItOptimizerLayer" mnemonicParsing="false" onAction="#actionClose" text="Got it" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ProgressBar fx:id="memoryCashCleanProgress" prefWidth="200.0" progress="0.0" GridPane.columnIndex="2" />
+            <ProgressBar fx:id="storageCashCleanProgress" prefWidth="200.0" progress="0.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ProgressBar fx:id="dnsCashCleanProgress" prefWidth="200.0" progress="0.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <ProgressBar fx:id="trashCleanProgress" prefWidth="200.0" progress="0.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

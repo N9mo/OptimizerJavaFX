@@ -2,13 +2,9 @@ package optimizer.Controller;
 
 import java.io.*;
 
-/**
- * Created by nemo on 13.05.17.
- */
-
 public class OptimizerController {
 
-    private static String password;
+   /* private static String password;
     private static String login;
 
     public static String getPassword() {
@@ -25,7 +21,7 @@ public class OptimizerController {
 
     public static void setLogin(String login) {
         OptimizerController.login = login;
-    }
+    }*/
 
     /**
      * For cachedMemoryCleaner we need to use “purge” command.
@@ -46,7 +42,7 @@ public class OptimizerController {
         double fileBackedPagesFinish;
         Process process = null;
         String commandVmStat = "vm_stat";
-        String[] commandPurge = {"/bin/bash", "-c", "echo " + password + " | sudo -S purge"};
+        String commandPurge = "sudo purge";
 
         try {
             process = Runtime.getRuntime().exec(commandVmStat);
@@ -61,20 +57,13 @@ public class OptimizerController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(outStart);
-        //Parsing outStart
-        /*//Test option. No parser class used
-        String [] array = outStart.split("File-backed pages:");
-        String [] array2 = array[1].split("Anonymous pages:");
-        fileBackedPagesStart = Double.parseDouble(array2[0]);
-        System.out.println("Current Cached Files Size: " + fileBackedPagesStart + " pages" + "(page size of 4096 bytes)");*/
 
         fileBackedPagesStart = Parser.parseOutVmstatCommand(outStart);
         System.out.println("Current Cached Files Size: " + fileBackedPagesStart + " pages" + "(page size of 4096 bytes)");
 
         try {
             process = Runtime.getRuntime().exec(commandPurge);
-            Thread.sleep(10000);
+            Thread.sleep(1000);
             process = Runtime.getRuntime().exec(commandVmStat);
         } catch (IOException e) {
             e.printStackTrace();
@@ -89,20 +78,13 @@ public class OptimizerController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //Parsing outFinish
-        /*//Test option. No parser class used
-        String [] array3 = outFinish.split("File-backed pages:");
-        String [] array4 = array[1].split("Anonymous pages:");
-        fileBackedPagesFinish = Double.parseDouble(array2[0]);
-        System.out.println("Current Cached Files Size: " + fileBackedPagesFinish + " pages" + "(page size of 4096 bytes)");*/
 
         fileBackedPagesFinish = Parser.parseOutVmstatCommand(outFinish);
         System.out.println("Optimized Cached Files Size: " + fileBackedPagesFinish + " pages" + "(page size of 4096 bytes)");
 
-        process.destroy();
-
         double improvement =(100-(fileBackedPagesFinish*100/fileBackedPagesStart));
         int result = (int) Math.round(improvement);
+        System.out.println(result); //test
 
         return result;
     }
@@ -112,65 +94,17 @@ public class OptimizerController {
     /**
      * {trashCleaner}
      * Trash cleaning. Delete all files and folders from the Trash.
-     *
-     *
      */
     public static void trashCleaner() {
         Process process = null;
-        String[] trashClean = {"/bin/bash", "-c", "echo " + password + " | sudo rm -rf ~/.Trash/*"};
+        String[] trashClean = {"sh", "-c", "rm -rf ~/.Trash/*"};
+        String[] trashClean2 = {"sh", "-c", "rm -rf /Volumes/*/.Trashes"};
         try {
             process = Runtime.getRuntime().exec(trashClean);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        process.destroy();
     }
-
-    public static int runSudoCommand() throws Exception {
-        String[] trashClean = {"sudo", "rm", "-rf", "~/.Trash/*"};
-
-        Runtime runtime =Runtime.getRuntime();
-        Process process = runtime.exec(trashClean);
-        OutputStream os = process.getOutputStream();
-        os.write((password+"\n").getBytes());
-        os.flush();
-        os.close();
-        process.waitFor();
-        String output = readFile(process.getInputStream());
-        if (output != null && !output.isEmpty()) {
-            System.out.println(output);
-        }
-        String error = readFile(process.getErrorStream());
-        if (error != null && !error.isEmpty()) {
-            System.out.println(error);
-        }
-        return process.exitValue();
-    }
-
-    private static String readFile(InputStream inputStream) throws Exception {
-        if (inputStream == null) {
-            return "";
-        }
-        StringBuilder sb = new StringBuilder();
-        BufferedReader bufferedReader = null;
-        try {
-            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            String line = bufferedReader.readLine();
-            while (line != null) {
-                sb.append(line);
-                line = bufferedReader.readLine();
-            }
-            return sb.toString();
-        } finally {
-            if (bufferedReader != null) {
-                bufferedReader.close();
-            }
-        }
-    }
-
-
-
-
 
     /**
      * {casheCleaner/casheCleaner2}
@@ -178,85 +112,32 @@ public class OptimizerController {
      * A good user cache cleaning could free up gigabytes
      * of free space and speed up your Mac in the process.
      * Need to close all apps before and reboot system after execute these methods.
-     *
-     *
      */
     public static void cacheStorageCleaner() {
         Process process = null;
-        String[] cacheClean = {"/bin/bash", "-c", "echo " + password + " | sudo rm -rf ~/Library/Caches/*"};
+        String[] cacheClean = {"sh", "-c", "rm -rf ~/Library/Caches/*"};
+        String[] cacheClean1 = {"sh", "-c", "rm -rf /Library/Caches/*"};
         try {
             process = Runtime.getRuntime().exec(cacheClean);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        process.destroy();
-    }
-
-    public static void cacheStorageCleaner2() {
-        Process process = null;
-        String[] cacheClean = {"/bin/bash", "-c", "echo " + password + " | sudo rm -rf /Library/Caches/*"};
-        try {
-            process = Runtime.getRuntime().exec(cacheClean);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        process.destroy();
     }
 
     /**
      * {cacheDNSCleaner}
      * DNS cache is old cache entries that translate internet domain  names
      * (example.com) into IP addresses on your Mac. Clear DNS cache regularly to make sure all websites work correctly.
-     *
      */
     public static void cacheDNSCleaner () {
         Process process = null;
-        String[] cacheClean = {"/bin/bash", "-c", "echo " + password + " | sudo dscacheutil -flushcache;sudo killall " +
+        String[] cacheClean = {"sh", "-c", "dscacheutil -flushcache;sudo killall " +
                 "-HUP mDNSResponder;say cache flushed"};
         try {
             process = Runtime.getRuntime().exec(cacheClean);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        process.destroy();
-    }
-
-    public static void getAppsList (String filePath){
-        Process process = null;
-        String[] listAppsCom = {"/bin/bash", "-c", "system_profiler -detailLevel full SPApplicationsDataType -xml >" + filePath};
-                try {
-            process = Runtime.getRuntime().exec(listAppsCom);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        process.destroy();
-    }
-        /*//Features
-        BufferedReader output = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        try {
-            while ((appsListTemp = output.readLine()) != null) {
-                appsList+=appsListTemp;
-                FileWriter out = new FileWriter(filePath);
-                out.write(appsList);
-                out.close();
-                System.out.println(appsList);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    //String[] listAppsCommandTest = {"/bin/bash", "-c", "echo " + password + " | sudo find / -iname *.app"};
-    */
-
-
-    public static void removeApplication (String appPath){
-        Process process = null;
-        String[] rmAppCommand = {"/bin/bash", "-c", "echo " + password + " | sudo rm -rf " + appPath};
-        try {
-            process = Runtime.getRuntime().exec(rmAppCommand);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        process.destroy();
     }
 }
 

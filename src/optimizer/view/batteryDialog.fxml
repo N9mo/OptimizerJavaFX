@@ -64,11 +64,6 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="batDiagnos" mnemonicParsing="false" onAction="#initialize" text="refresh" GridPane.columnIndex="2" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="150.0" />
-               </GridPane.margin>
-            </Button>
             <Text fx:id="energyCycle" fill="#8d8a8a" strokeType="OUTSIDE" strokeWidth="0.0" text="Energy Cycle" GridPane.rowIndex="4">
                <font>
                   <Font name="Catamaran Bold" size="20.0" />

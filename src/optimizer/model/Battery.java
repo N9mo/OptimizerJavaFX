@@ -12,7 +12,7 @@ public class Battery {
     private static double energyDesign;
     private static double energyWhenFull;
     private static double energyCurrent;
-    private static double energyCycle;
+    private static String energyCycle;
     private static double energyDecayed;
 
     public double getEnergyDesign() {
@@ -27,7 +27,7 @@ public class Battery {
         return energyCurrent;
     }
 
-    public double getEnergyCycle() {
+    public String getEnergyCycle() {
         return energyCycle;
     }
 
@@ -47,7 +47,7 @@ public class Battery {
         this.energyCurrent = energyCurrent;
     }
 
-    public void setEnergyCycle(double energyCycle) {
+    public void setEnergyCycle(String energyCycle) {
         this.energyCycle = energyCycle;
     }
 

@@ -1,33 +1,86 @@
 package optimizer.view;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 import optimizer.Controller.OptimizerController;
-import optimizer.model.Account;
 
 public class OptimizerDialogController {
 
-    Account account;
+    @FXML
+    private ProgressBar memoryCashCleanProgress;
+    @FXML
+    private ProgressBar storageCashCleanProgress;
+    @FXML
+    private ProgressBar dnsCashCleanProgress;
+    @FXML
+    private ProgressBar trashCleanProgress;
+    @FXML
+    private Label trashCleanLabel;
+    @FXML
+    private Label dnsCashCleanLabel;
+    @FXML
+    private Label storageCashCleanLabel;
+    @FXML
+    private Label memoryCashCleanLabel;
 
-
-    public void memoryCashClean(ActionEvent actionEvent) { OptimizerController.cachedMemoryCleaner();
+    public void memoryCashClean(ActionEvent actionEvent) {
+        OptimizerController.cachedMemoryCleaner();
+        memoryCashCleanProgress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
+        memoryCashCleanLabel.setText("progress");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        memoryCashCleanLabel.setText("done");
+        memoryCashCleanProgress.setProgress(1);
     }
 
     public void storageCashClean(ActionEvent actionEvent) {
         OptimizerController.cacheStorageCleaner();
-        OptimizerController.cacheStorageCleaner2();
+        storageCashCleanProgress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
+        storageCashCleanLabel.setText("progress");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        storageCashCleanLabel.setText("done");
+        storageCashCleanProgress.setProgress(1);
     }
 
-    public void dnsCashClean(ActionEvent actionEvent) { OptimizerController.cacheDNSCleaner();
+    public void dnsCashClean(ActionEvent actionEvent) {
+        OptimizerController.cacheDNSCleaner();
+        dnsCashCleanProgress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
+        dnsCashCleanLabel.setText("progress");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        dnsCashCleanLabel.setText("done");
+        dnsCashCleanProgress.setProgress(1);
     }
 
     public void trashClean(ActionEvent actionEvent) {
         try {
-            OptimizerController.runSudoCommand();
+            OptimizerController.trashCleaner();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        trashCleanProgress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
+        trashCleanLabel.setText("progress");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        trashCleanLabel.setText("done");
+        trashCleanProgress.setProgress(1);
     }
 
     public void actionClose(ActionEvent actionEvent) {

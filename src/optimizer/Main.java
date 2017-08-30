@@ -11,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.GaussianBlur;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -20,17 +19,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import optimizer.Controller.OptimizerController;
-import optimizer.model.Account;
-
 import java.io.IOException;
-
 
 public class Main extends Application {
 
     private Stage primaryStage;
-    //private BorderPane rootLayout;
-
-   // public static Stage windowMain;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -44,7 +37,6 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-  //show loginWindow
         root.setEffect(new GaussianBlur());
         showLoginWindow();
         root.setEffect(null);
@@ -63,14 +55,12 @@ public class Main extends Application {
         username.setStyle("-fx-text-inner-color: gray;");
         username.setTranslateY(70);
         username.setTranslateX(65);
-        //username.setFocusTraversable(true);
 
         PasswordField password = new PasswordField();
         password.setPromptText("password");
         password.setStyle("-fx-text-inner-color: gray;");
         password.setTranslateY(100);
         password.setTranslateX(65);
-        //password.setFocusTraversable(true);
 
         Image duck = new Image("/file/duck-icon.png");
         ImageView ivDuck = new ImageView();
@@ -80,7 +70,6 @@ public class Main extends Application {
         ivDuck.setTranslateX(130);
         ivDuck.setPreserveRatio(true);
         ivDuck.setSmooth(true);
-       // ivDuck.setCache(true);
 
         Button loginBtn = new Button();
         loginBtn.setText("Login");
@@ -91,7 +80,6 @@ public class Main extends Application {
         loginBtn.setMinWidth(100);
         loginBtn.setTranslateX(100);
         loginBtn.setTranslateY(155);
-        //loginBtn.setDefaultButton(true);
 
         Button cancelBtn = new Button();
         cancelBtn.setText("Cancel");
@@ -112,9 +100,9 @@ public class Main extends Application {
         loginBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (username.getText().equals("user") && password.getText().equals("admin")) {
-                    OptimizerController.setPassword(password.getText());
-                    OptimizerController.setLogin(username.getText());
+                if (username.getText().equals("user") && password.getText().equals("berserker")) {
+                    //OptimizerController.setPassword(password.getText());
+                    //OptimizerController.setLogin(username.getText());
                     window.close();
                 } else {
                     loginErrorLabel.setText("          Incorrect username or password\n                       Please try again");
@@ -128,7 +116,6 @@ public class Main extends Application {
             public void handle(ActionEvent event) {
                 primaryStage.close();
                     window.close();
-
             }
         });
 
@@ -137,16 +124,11 @@ public class Main extends Application {
         Scene scene = new Scene(layout);
         layout.getStylesheets().add(this.getClass().getResource("style/dark.css").toExternalForm());
 
-        //username.setFocusTraversable(false);
-        //password.setFocusTraversable(false);
-
         window.setScene(scene);
         window.setAlwaysOnTop(true);
         window.showAndWait();
     }
 
-    public static void main(String[] args) {
-
-        launch(args);
+    public static void main(String[] args) { launch(args);
     }
 }
