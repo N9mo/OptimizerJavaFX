@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/dark.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="optimizer.view.WifiDialogController">
+   <children>
+      <GridPane prefHeight="337.0" prefWidth="600.0" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="332.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="364.0" minWidth="10.0" prefWidth="268.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="ispWFLabel" text="ISP" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="60.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Catamaran SemiBold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="modemWFLabel" text="Modem" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="60.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Catamaran SemiBold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="routerWFLabel" text="Router" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="60.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Catamaran SemiBold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="computerWFLabel" text="Computer" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="60.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Catamaran SemiBold" size="15.0" />
+               </font>
+            </Label>
+            <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <right>
+                  <Label fx:id="computerWFProgrLabel" text="Label" BorderPane.alignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <BorderPane.margin>
+                        <Insets right="60.0" />
+                     </BorderPane.margin>
+                     <font>
+                        <Font name="Catamaran SemiBold" size="15.0" />
+                     </font>
+                  </Label>
+               </right>
+            </BorderPane>
+            <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <right>
+                  <Label fx:id="routerWFProgrLabel" text="Label" BorderPane.alignment="CENTER">
+                     <opaqueInsets>
+                        <Insets right="40.0" />
+                     </opaqueInsets>
+                     <BorderPane.margin>
+                        <Insets right="60.0" />
+                     </BorderPane.margin>
+                     <font>
+                        <Font name="Catamaran SemiBold" size="15.0" />
+                     </font>
+                  </Label>
+               </right>
+            </BorderPane>
+            <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <right>
+                  <Label fx:id="modemWFProgrLabel" text="Label" BorderPane.alignment="CENTER">
+                     <opaqueInsets>
+                        <Insets right="40.0" />
+                     </opaqueInsets>
+                     <BorderPane.margin>
+                        <Insets right="60.0" />
+                     </BorderPane.margin>
+                     <font>
+                        <Font name="Catamaran SemiBold" size="15.0" />
+                     </font>
+                  </Label>
+               </right>
+            </BorderPane>
+            <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <right>
+                  <Label fx:id="ispWFProgrLabel" text="Label" BorderPane.alignment="CENTER">
+                     <opaqueInsets>
+                        <Insets right="40.0" />
+                     </opaqueInsets>
+                     <BorderPane.margin>
+                        <Insets right="60.0" />
+                     </BorderPane.margin>
+                     <font>
+                        <Font name="Catamaran SemiBold" size="15.0" />
+                     </font>
+                  </Label>
+               </right>
+            </BorderPane>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label prefHeight="36.0" prefWidth="281.0" text="Descriptions of the process here" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="Catamaran Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+      <Button fx:id="gotItWifiLayer" layoutX="269.0" layoutY="353.0" mnemonicParsing="false" onAction="#closeWindow" text="Got it" />
+   </children>
+</AnchorPane>

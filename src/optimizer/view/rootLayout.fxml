@@ -48,7 +48,7 @@
                   <Insets bottom="10.0" left="40.0" right="10.0" top="20.0" />
                </GridPane.margin>
                <children>
-                  <Button alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="119.0" prefWidth="462.0" text="Fix Wi-Fi">
+                  <Button alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openWifiDialog" prefHeight="119.0" prefWidth="462.0" text="Fix Wi-Fi">
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>

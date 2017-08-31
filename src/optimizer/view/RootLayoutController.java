@@ -29,6 +29,7 @@ import optimizer.Controller.StorageController;
 import optimizer.Main;
 import optimizer.model.Battery;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -192,95 +193,6 @@ public class RootLayoutController {
         getStorageInfo(null);
     }
 
-    public void openWebSiteDialog(ActionEvent actionEvent) {
-        try {
-
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("webSiteDialog.fxml"));
-            stage.setTitle("Website status check");
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-            gridPane.setEffect(new GaussianBlur());
-            stage.show();
-/**
- * отменяет блюр основного окна после закрітия batteryDialog * */
-            stage.setOnHidden(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    gridPane.setEffect(null);
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void openFinderDockDialog(ActionEvent actionEvent) {
-        try {
-
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("finderDockDialog.fxml"));
-            stage.setTitle("Finder/Dock Fix");
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-            gridPane.setEffect(new GaussianBlur());
-            stage.show();
-/**
- * отменяет блюр основного окна после закрітия batteryDialog * */
-            stage.setOnHidden(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    gridPane.setEffect(null);
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public void openBatteryDialog(ActionEvent actionEvent) {
-         try {
-
-             Stage stage = new Stage();
-             Parent root = FXMLLoader.load(getClass().getResource("batteryDialog.fxml"));
-             stage.setTitle("Battery Diagnostic");
-             stage.setResizable(false);
-             stage.setScene(new Scene(root));
-             stage.initModality(Modality.WINDOW_MODAL);
-             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-             gridPane.setEffect(new GaussianBlur());
-             stage.show();
-
-             /**
- * отменяет блюр основного окна после закрітия batteryDialog *
- */
-             stage.setOnHidden(new EventHandler<WindowEvent>() {
-                 @Override
-                 public void handle(WindowEvent event) {
-                     gridPane.setEffect(null);
-                 }
-             });
-
-            /*FXMLLoader loader = new FXMLLoader("view/batteryDialog.fxml");
-            loader.setLocation(Main.class.getResource("view/batteryDialog.fxml"));
-            Pane pane = (Pane) loader.load();
-
-            // Помещаем сведения о батарее в центр корневого макета.
-            rootLayout.setCenter(pane);
-
-            // Даём контроллеру доступ к главному приложению.
-            BatteryDialogController controller = loader.getController();
-            controller.setMainApp(this);*/
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void showGauge (MouseEvent mouseEvent) {
         System.out.println(mouseEvent.getButton().toString());
@@ -304,10 +216,7 @@ public class RootLayoutController {
 
             HashMap<String,Double> map = batteryController.showBatInfoTest();
             batteryGauge.setValue((map.get("EnergyCurrent"))/(map.get("EnergyDesign"))*100);*/
-
         }
-
-
     }
 
     public void getStorageInfo(ActionEvent actionEvent) {
@@ -317,7 +226,6 @@ public class RootLayoutController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
             System.out.println(resulStorageMap1.get(1).getKey());
             System.out.println(resulStorageMap1.get(1).getValue().getKey());
             System.out.println(resulStorageMap1.get(1).getValue().getValue());
@@ -334,14 +242,15 @@ public class RootLayoutController {
                 //gauge2.setDisable(false);
                 storage2Label.setText(resulStorageMap1.get(2).getKey());
             }
-
     }
 
-    public void openOptimizerDialog(ActionEvent actionEvent) {
+
+    public void openDialog(ActionEvent actionEvent, String fileName, String windowsName) {
         try {
+
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("optimizerDialog.fxml"));
-            stage.setTitle("Optimizer");
+            Parent root = FXMLLoader.load(getClass().getResource(fileName));
+            stage.setTitle(windowsName);
             stage.setResizable(false);
             stage.setScene(new Scene(root));
             stage.initModality(Modality.WINDOW_MODAL);
@@ -360,4 +269,151 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+
+    public void openWebSiteDialog(ActionEvent actionEvent) {
+        openDialog(actionEvent, "webSiteDialog.fxml", "Website status check");
+    }
+
+    public void openFinderDockDialog(ActionEvent actionEvent) {
+        openDialog(actionEvent, "finderDockDialog.fxml", "Finder/Dock Fix");
+    }
+
+    public void openBatteryDialog(ActionEvent actionEvent) {
+        openDialog(actionEvent, "batteryDialog.fxml", "Battery Diagnostic");
+    }
+
+    public void openOptimizerDialog(ActionEvent actionEvent) {
+        openDialog(actionEvent, "optimizerDialog.fxml", "Optimizer");
+    }
+
+    public void openWifiDialog(ActionEvent actionEvent) {
+        openDialog(actionEvent, "wifiDialog.fxml", "Fixing Wi-Fi");
+    }
+
+
+    /*public void openWebSiteDialog(ActionEvent actionEvent) {
+        try {
+
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("webSiteDialog.fxml"));
+            stage.setTitle("Website status check");
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            gridPane.setEffect(new GaussianBlur());
+            stage.show();
+*//**
+ * отменяет блюр основного окна после закрітия batteryDialog * *//*
+            stage.setOnHidden(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    gridPane.setEffect(null);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openFinderDockDialog(ActionEvent actionEvent) {
+        try {
+
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("finderDockDialog.fxml"));
+            stage.setTitle("Finder/Dock Fix");
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            gridPane.setEffect(new GaussianBlur());
+            stage.show();
+*//**
+ * отменяет блюр основного окна после закрітия batteryDialog * *//*
+            stage.setOnHidden(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    gridPane.setEffect(null);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openBatteryDialog(ActionEvent actionEvent) {
+        try {
+
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("batteryDialog.fxml"));
+            stage.setTitle("Battery Diagnostic");
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            gridPane.setEffect(new GaussianBlur());
+            stage.show();
+
+            *//**
+             * отменяет блюр основного окна после закрітия batteryDialog *
+             *//*
+            stage.setOnHidden(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    gridPane.setEffect(null);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openOptimizerDialog(ActionEvent actionEvent) {
+        try {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("optimizerDialog.fxml"));
+            stage.setTitle("Optimizer");
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            gridPane.setEffect(new GaussianBlur());
+            stage.show();
+*//**
+ * отменяет блюр основного окна после закрітия batteryDialog * *//*
+            stage.setOnHidden(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    gridPane.setEffect(null);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openWifiDialog(ActionEvent actionEvent) {
+        try {
+
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("wifiDialog.fxml"));
+            stage.setTitle("Fixing Wi-Fi");
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            gridPane.setEffect(new GaussianBlur());
+            stage.show();
+*//**
+ * отменяет блюр основного окна после закрітия batteryDialog * *//*
+            stage.setOnHidden(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    gridPane.setEffect(null);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
 }
