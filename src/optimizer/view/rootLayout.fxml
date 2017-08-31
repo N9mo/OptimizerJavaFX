@@ -114,7 +114,7 @@
                   <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
                </GridPane.margin>
                <children>
-                  <Button fx:id="bateryButton" alignment="TOP_LEFT" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openBatteryDialog" onMouseClicked="#showGauge" prefHeight="270.0" prefWidth="462.0" text="Battery Status">
+                  <Button fx:id="bateryButton" alignment="TOP_LEFT" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openBatteryDialog"  prefHeight="270.0" prefWidth="462.0" text="Battery Status">
                      <font>
                         <Font name="Catamaran Bold" size="20.0" />
                      </font></Button>

@@ -36,59 +36,20 @@ import java.util.HashMap;
 
 public class RootLayoutController {
 
-    // Ссылка на главное приложение.
-    private Main mainApp;
-
-
-
-    @FXML
-    private Text battDescriptionProcess;
     @FXML
     private Pane batStatPane;
     @FXML
     private Pane storCapPane;
     @FXML
-    private com.gluonhq.charm.glisten.control.ProgressBar progressBar;
-
-    @FXML
-    private Button bateryButton;
-    @FXML
-    private Text textArea2;
-    @FXML
-    private Text textArea3;
-    @FXML
-    private TextField textFieldBatteryArea;
-    @FXML
     protected GridPane gridPane;
-    @FXML
-    private Button optimizerButton;
     @FXML
     private Text storage1Label;
     @FXML
     private Text storage2Label;
 
-
     Gauge gauge1;
     Gauge gauge2;
-
     HashMap <Integer, Pair<String, Pair<Long,Long>>> resulStorageMap1;
-
-    /*public GridPane getGridPane() {
-        return gridPane;
-    }
-
-    public void setGridPane(GridPane gridPane) {
-        this.gridPane = gridPane;
-    }
-
-    *//**
-     * Вызывается главным приложением, которое даёт на себя ссылку.
-     *
-     * @param
-     *//*
-    public void setMainApp(Main mainApp) {
-        this.mainApp = mainApp;
-    }*/
 
     @FXML
     private void initialize() {
@@ -193,61 +154,32 @@ public class RootLayoutController {
         getStorageInfo(null);
     }
 
-
-    public void showGauge (MouseEvent mouseEvent) {
-        System.out.println(mouseEvent.getButton().toString());
-        if (mouseEvent.getButton().toString().equals("SECONDARY")) {
-            gridPane.setBlendMode(BlendMode.OVERLAY);
-
-            //gridPane.setEffect(null);
-
-        }
-
-        if (mouseEvent.getButton().toString().equals("MIDDLE")) {
-            gridPane.setEffect(new GaussianBlur());
-
-            //gridPane.setBlendMode(null);
-        }
-
-        if (mouseEvent.getEventType().getName().toString().equals("MOUSE_CLICKED")) {
-            //Battery bat = new Battery();
-            //bat.initBatt(bat.getBattInfo());
-            /*battDescriptionProcess.setText((map.get("EnergyDecayed")).intValue() + " %");
-
-            HashMap<String,Double> map = batteryController.showBatInfoTest();
-            batteryGauge.setValue((map.get("EnergyCurrent"))/(map.get("EnergyDesign"))*100);*/
-        }
-    }
-
     public void getStorageInfo(ActionEvent actionEvent) {
-
         try {
             resulStorageMap1 = StorageController.run();
         } catch (IOException e) {
             e.printStackTrace();
         }
-            System.out.println(resulStorageMap1.get(1).getKey());
-            System.out.println(resulStorageMap1.get(1).getValue().getKey());
-            System.out.println(resulStorageMap1.get(1).getValue().getValue());
-            gauge1.setValue(resulStorageMap1.get(1).getValue().getValue());
-            gauge1.setMaxValue(resulStorageMap1.get(1).getValue().getKey());
-            storage1Label.setText(resulStorageMap1.get(1).getKey());
+        System.out.println(resulStorageMap1.get(1).getKey());
+        System.out.println(resulStorageMap1.get(1).getValue().getKey());
+        System.out.println(resulStorageMap1.get(1).getValue().getValue());
+        gauge1.setValue(resulStorageMap1.get(1).getValue().getValue());
+        gauge1.setMaxValue(resulStorageMap1.get(1).getValue().getKey());
+        storage1Label.setText(resulStorageMap1.get(1).getKey());
 
-            if (resulStorageMap1.size()!=0) {
-                System.out.println(resulStorageMap1.get(2).getKey());
-                System.out.println(resulStorageMap1.get(2).getValue().getKey());
-                System.out.println(resulStorageMap1.get(2).getValue().getValue());
-                gauge2.setValue(resulStorageMap1.get(2).getValue().getValue());
-                gauge2.setMaxValue(resulStorageMap1.get(2).getValue().getKey());
-                //gauge2.setDisable(false);
-                storage2Label.setText(resulStorageMap1.get(2).getKey());
-            }
+        if (resulStorageMap1.size()!=0) {
+            System.out.println(resulStorageMap1.get(2).getKey());
+            System.out.println(resulStorageMap1.get(2).getValue().getKey());
+            System.out.println(resulStorageMap1.get(2).getValue().getValue());
+            gauge2.setValue(resulStorageMap1.get(2).getValue().getValue());
+            gauge2.setMaxValue(resulStorageMap1.get(2).getValue().getKey());
+            //gauge2.setDisable(false);
+            storage2Label.setText(resulStorageMap1.get(2).getKey());
+        }
     }
-
 
     public void openDialog(ActionEvent actionEvent, String fileName, String windowsName) {
         try {
-
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource(fileName));
             stage.setTitle(windowsName);
@@ -257,8 +189,6 @@ public class RootLayoutController {
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
             gridPane.setEffect(new GaussianBlur());
             stage.show();
-/**
- * отменяет блюр основного окна после закрітия batteryDialog * */
             stage.setOnHidden(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {
@@ -289,131 +219,4 @@ public class RootLayoutController {
     public void openWifiDialog(ActionEvent actionEvent) {
         openDialog(actionEvent, "wifiDialog.fxml", "Fixing Wi-Fi");
     }
-
-
-    /*public void openWebSiteDialog(ActionEvent actionEvent) {
-        try {
-
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("webSiteDialog.fxml"));
-            stage.setTitle("Website status check");
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-            gridPane.setEffect(new GaussianBlur());
-            stage.show();
-*//**
- * отменяет блюр основного окна после закрітия batteryDialog * *//*
-            stage.setOnHidden(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    gridPane.setEffect(null);
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void openFinderDockDialog(ActionEvent actionEvent) {
-        try {
-
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("finderDockDialog.fxml"));
-            stage.setTitle("Finder/Dock Fix");
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-            gridPane.setEffect(new GaussianBlur());
-            stage.show();
-*//**
- * отменяет блюр основного окна после закрітия batteryDialog * *//*
-            stage.setOnHidden(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    gridPane.setEffect(null);
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void openBatteryDialog(ActionEvent actionEvent) {
-        try {
-
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("batteryDialog.fxml"));
-            stage.setTitle("Battery Diagnostic");
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-            gridPane.setEffect(new GaussianBlur());
-            stage.show();
-
-            *//**
-             * отменяет блюр основного окна после закрітия batteryDialog *
-             *//*
-            stage.setOnHidden(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    gridPane.setEffect(null);
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void openOptimizerDialog(ActionEvent actionEvent) {
-        try {
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("optimizerDialog.fxml"));
-            stage.setTitle("Optimizer");
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-            gridPane.setEffect(new GaussianBlur());
-            stage.show();
-*//**
- * отменяет блюр основного окна после закрітия batteryDialog * *//*
-            stage.setOnHidden(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    gridPane.setEffect(null);
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void openWifiDialog(ActionEvent actionEvent) {
-        try {
-
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("wifiDialog.fxml"));
-            stage.setTitle("Fixing Wi-Fi");
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-            gridPane.setEffect(new GaussianBlur());
-            stage.show();
-*//**
- * отменяет блюр основного окна после закрітия batteryDialog * *//*
-            stage.setOnHidden(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    gridPane.setEffect(null);
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
 }
