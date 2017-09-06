@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -10,13 +11,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/dark.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="optimizer.view.WifiDialogController">
    <children>
       <GridPane prefHeight="337.0" prefWidth="600.0" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="332.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="364.0" minWidth="10.0" prefWidth="268.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="200.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="364.0" minWidth="10.0" prefWidth="242.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="364.0" minWidth="10.0" prefWidth="159.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -58,9 +59,9 @@
                   <Font name="Catamaran SemiBold" size="15.0" />
                </font>
             </Label>
-            <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <BorderPane GridPane.columnIndex="2" GridPane.rowIndex="1">
                <right>
-                  <Label fx:id="computerWFProgrLabel" text="Label" BorderPane.alignment="CENTER">
+                  <Label fx:id="computerWFProgrLabel" text="waiting..." BorderPane.alignment="CENTER">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -73,9 +74,9 @@
                   </Label>
                </right>
             </BorderPane>
-            <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <BorderPane GridPane.columnIndex="2" GridPane.rowIndex="2">
                <right>
-                  <Label fx:id="routerWFProgrLabel" text="Label" BorderPane.alignment="CENTER">
+                  <Label fx:id="routerWFProgrLabel" text="waiting..." BorderPane.alignment="CENTER">
                      <opaqueInsets>
                         <Insets right="40.0" />
                      </opaqueInsets>
@@ -88,9 +89,9 @@
                   </Label>
                </right>
             </BorderPane>
-            <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <BorderPane GridPane.columnIndex="2" GridPane.rowIndex="3">
                <right>
-                  <Label fx:id="modemWFProgrLabel" text="Label" BorderPane.alignment="CENTER">
+                  <Label fx:id="modemWFProgrLabel" text="waiting..." BorderPane.alignment="CENTER">
                      <opaqueInsets>
                         <Insets right="40.0" />
                      </opaqueInsets>
@@ -103,9 +104,9 @@
                   </Label>
                </right>
             </BorderPane>
-            <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <BorderPane GridPane.columnIndex="2" GridPane.rowIndex="4">
                <right>
-                  <Label fx:id="ispWFProgrLabel" text="Label" BorderPane.alignment="CENTER">
+                  <Label fx:id="ispWFProgrLabel" text="waiting..." BorderPane.alignment="CENTER">
                      <opaqueInsets>
                         <Insets right="40.0" />
                      </opaqueInsets>
@@ -127,7 +128,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label prefHeight="36.0" prefWidth="281.0" text="Descriptions of the process here" GridPane.rowIndex="1">
+                  <Label prefHeight="36.0" prefWidth="281.0" text="Descriptions" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin>
@@ -137,6 +138,10 @@
                   </Label>
                </children>
             </GridPane>
+            <ProgressBar fx:id="ispWFProgrProgress" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ProgressBar fx:id="modemWFProgrProgress" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ProgressBar fx:id="routerWFProgrProgress" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ProgressBar fx:id="computerWFProgrProgress" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Button fx:id="gotItWifiLayer" layoutX="269.0" layoutY="353.0" mnemonicParsing="false" onAction="#closeWindow" text="Got it" />

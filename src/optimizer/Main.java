@@ -18,7 +18,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import optimizer.Controller.OptimizerController;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -38,7 +37,7 @@ public class Main extends Application {
         primaryStage.show();
 
         root.setEffect(new GaussianBlur());
-        showLoginWindow();
+        //showLoginWindow();
         root.setEffect(null);
     }
 
