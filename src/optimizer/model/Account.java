@@ -1,22 +1,22 @@
 package optimizer.model;
 
 public class Account {
-    private String login;
-    private String password;
+    private static String login;
+    private static String password;
 
-    public void setLogin(String login) {
-        this.login = login;
+    public static void setLogin(String login) {
+        Account.login = login;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public static void setPassword(String password) {
+        Account.password = password;
     }
 
-    public String getLogin() {
+    public static String getLogin() {
         return login;
     }
 
-    public String getPassword() {
+    public static String getPassword() {
         return password;
     }
 }

@@ -18,6 +18,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import optimizer.model.Account;
+
 import java.io.IOException;
 
 public class Main extends Application {
@@ -37,7 +39,7 @@ public class Main extends Application {
         primaryStage.show();
 
         root.setEffect(new GaussianBlur());
-        //showLoginWindow();
+        showLoginWindow();
         root.setEffect(null);
     }
 
@@ -97,11 +99,13 @@ public class Main extends Application {
         loginErrorLabel.setTextFill(Color.ORANGERED);
 
         loginBtn.setOnAction(new EventHandler<ActionEvent>() {
+
             @Override
             public void handle(ActionEvent event) {
-                if (username.getText().equals("user") && password.getText().equals("berserker")) {
-                    //OptimizerController.setPassword(password.getText());
-                    //OptimizerController.setLogin(username.getText());
+                //if (username.getText().equals("user") && password.getText().equals("12345")) {
+                if (!username.getText().isEmpty() && !password.getText().isEmpty()) {
+                    Account.setPassword(password.getText());
+                    Account.setLogin(username.getText());
                     window.close();
                 } else {
                     loginErrorLabel.setText("          Incorrect username or password\n                       Please try again");

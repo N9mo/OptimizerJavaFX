@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 import optimizer.Controller.OptimizerController;
+import optimizer.model.Account;
 
 public class OptimizerDialogController {
 
@@ -28,7 +29,7 @@ public class OptimizerDialogController {
     private Label memoryCashCleanLabel;
 
     public void memoryCashClean(ActionEvent actionEvent) {
-        OptimizerController.cachedMemoryCleaner();
+        OptimizerController.cachedMemoryCleaner(Account.getPassword());
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -50,7 +51,7 @@ public class OptimizerDialogController {
     }
 
     public void dnsCashClean(ActionEvent actionEvent) {
-        OptimizerController.cacheDNSCleaner();
+        OptimizerController.cacheDNSCleaner(Account.getPassword());
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

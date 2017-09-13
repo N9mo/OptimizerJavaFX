@@ -4,6 +4,7 @@ import java.io.*;
 
 public class OptimizerController {
 
+
     /**
      * For cachedMemoryCleaner we need to use “purge” command.
      * The purge command forces disk and memory caches to be emptied, offering a ‘cold disk buffer cache’ which is
@@ -15,7 +16,7 @@ public class OptimizerController {
      * E.g. class can get psw from your UI classes and save to String psw when the application starts.
      * * @param password
      */
-    public static int cachedMemoryCleaner() {
+    public static int cachedMemoryCleaner(String password) {
         String outTemp = "";
         String outStart = "";
         String outFinish = "";
@@ -23,7 +24,7 @@ public class OptimizerController {
         double fileBackedPagesFinish;
         Process process = null;
         String commandVmStat = "vm_stat";
-        String commandPurge = "sudo purge";
+        String[] commandPurge = {"sh", "-c", "echo " + password +  " | sudo -S purge"};
 
         try {
             process = Runtime.getRuntime().exec(commandVmStat);
@@ -44,7 +45,7 @@ public class OptimizerController {
 
         try {
             process = Runtime.getRuntime().exec(commandPurge);
-            Thread.sleep(1000);
+            Thread.sleep(500);
             process = Runtime.getRuntime().exec(commandVmStat);
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,7 +66,7 @@ public class OptimizerController {
 
         double improvement =(100-(fileBackedPagesFinish*100/fileBackedPagesStart));
         int result = (int) Math.round(improvement);
-        System.out.println(result); //test
+        System.out.println("Optimization " + result +"%"); //test
 
         return result;
     }
@@ -97,7 +98,7 @@ public class OptimizerController {
         String[] cacheClean = {"sh", "-c", "Rm -rf ~/Library/Caches/*"};
         String[] cacheClean1 = {"sh", "-c", "Rm -rf /Library/Caches/*"};
         try {
-            process = Runtime.getRuntime().exec(cacheClean);
+            process = Runtime.getRuntime().exec(cacheClean1);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,10 +109,10 @@ public class OptimizerController {
      * DNS cache is old cache entries that translate internet domain  names
      * (example.com) into IP addresses on your Mac. Clear DNS cache regularly to make sure all websites work correctly.
      */
-    public static void cacheDNSCleaner () {
+    public static void cacheDNSCleaner (String password) {
         Process process = null;
-        String[] cacheClean = {"sh", "-c", "dscacheutil -flushcache;sudo killall " +
-                "-HUP mDNSResponder;say cache flushed"};
+        String[] cacheClean = {"sh", "-c", "echo " + password +  " | sudo killall " +
+                "-HUP mDNSResponder"};
         try {
             process = Runtime.getRuntime().exec(cacheClean);
         } catch (IOException e) {
