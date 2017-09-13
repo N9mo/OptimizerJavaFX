@@ -111,10 +111,9 @@ public class OptimizerController {
      */
     public static void cacheDNSCleaner (String password) {
         Process process = null;
-        String[] cacheClean = {"sh", "-c", "echo " + password +  " | sudo killall " +
-                "-HUP mDNSResponder"};
+        String[] cacheDNSClean = {"sh", "-c", "echo " + password +  " | sudo killall " + "-HUP mDNSResponder"};
         try {
-            process = Runtime.getRuntime().exec(cacheClean);
+            process = Runtime.getRuntime().exec(cacheDNSClean);
         } catch (IOException e) {
             e.printStackTrace();
         }

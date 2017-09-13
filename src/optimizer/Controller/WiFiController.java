@@ -1,19 +1,11 @@
-package optimizer.Controller;//package processAutomator;
+package optimizer.Controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.*;
 
-class executeNetworkCommands {
+public class WiFiController {
 
     // components for getting the TraceRoute
     static int data;
@@ -36,8 +28,9 @@ class executeNetworkCommands {
     static String output;
     static List t;
 
+
     // main method
-    public static void run(String[] args) {
+    public static int[] run(String password) {
 
         // initializing components for DNS flush
         dnsProcess = null;
@@ -96,7 +89,8 @@ class executeNetworkCommands {
 
         try {
             // flushing the dnsWriter
-            dnsProcess = Runtime.getRuntime().exec("sudo killall -HUP mDNSResponder");
+            String[] cacheDNSClean = {"sh", "-c", "echo " + password +  " | sudo killall " + "-HUP mDNSResponder"};
+            dnsProcess = Runtime.getRuntime().exec(cacheDNSClean);
 
             dnsWriter = new BufferedWriter(new OutputStreamWriter(dnsProcess.getOutputStream()));
             dnsWriter.write(adminPassword);
@@ -116,10 +110,11 @@ class executeNetworkCommands {
         }
 
         // Sending and printing the TraceRoute
-        getTraceRoute();
+        int[] result = getTraceRoute();
 
         // turning the network adapter off(cycle start)
         output = executeCommand("networksetup -setairportpower airport off");
+        System.out.println(output);   //test
 
         // waiting 3 seconds before turning the network adapter on
         try {
@@ -130,15 +125,22 @@ class executeNetworkCommands {
 
         // turning the network adapter on(cycle stop)
         output = executeCommand("networksetup -setairportpower airport on");
+        System.out.println(output);   //test
 
         // deploying the result of the TraceRoute
         traceOutputFrame.setSize(600, 600);
         traceOutputFrame.setVisible(true);
 
+        return result;
+
     }
 
     // to get the trace
-    public static synchronized void getTraceRoute() {
+    public static int[] getTraceRoute() {
+
+        int resultModem = 0;
+        int resultISP= 0;
+        int resultServer = 0;
 
         try {
             // executing the command
@@ -155,30 +157,51 @@ class executeNetworkCommands {
 
             // reading the result of the the TraceRoute
             while ((data = traceInutStream.read()) > 9.5) {
+                //System.out.println("data* " + traceInutStream.read()); //Test
 
                 traceOutput += (char) data;
+                //System.out.println("traceOutput* " + traceOutput.contains()); //Test
 
                 // troubleshooting the location of packet loss
                 if (data == '*') {
-                    if (traceOutput.contains("1"))
+                    if (traceOutput.contains("1")){
+
                         tracePacketLossLocation = "PACKET LOSS AT MODEM";
-                    if (traceOutput.contains("2"))
+                        System.out.println(tracePacketLossLocation); //Test
+                        resultModem =1;}
+                    if (traceOutput.contains("2")){
                         tracePacketLossLocation = "PACKET LOSS AT YOUR ISP";
-                    if (traceOutput.contains("3"))
+                        System.out.println(tracePacketLossLocation); //Test
+                        resultISP =1;}
+                    if (traceOutput.contains("3")){
                         tracePacketLossLocation = "PACKET LOSS AT EXTERNAL SERVER";
+                        System.out.println(tracePacketLossLocation); //Test
+                        resultServer =1;}
+
+
+                    System.out.println("tracePacketLossLocation* " + tracePacketLossLocation);   //test
 
                 }
+                System.out.println("traceOutput* " + traceOutput);   //test
 
             }
+            //System.out.println("traceOutput* " + traceOutput);   //test
             if (tracePacketLossLocation.equals(""))
                 tracePacketLossLocation = "No Packet Loss";
 
-            System.out.println(tracePacketLossLocation);
+            System.out.println("tracePacketLossLocation*" + tracePacketLossLocation);
             t.add("\n" + tracePacketLossLocation);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        traceOutput="";
+        int [] result= {resultModem, resultISP, resultServer};
+        System.out.println("resultModem" + resultModem); //Test
+        System.out.println("resultISP" + resultISP); //Test
+        System.out.println("resultServer" + resultServer); //Test
+        return result;
 
     }
 
