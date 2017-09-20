@@ -106,7 +106,7 @@ public class RootLayoutController {
         gauge1.setAnimated(true);
         gauge1.setAnimationDuration(10000);
         gauge1.setTitle("");
-        gauge1.setUnit("MB used");
+        gauge1.setUnit("%");
         gauge1.setUnitColor(Color.GRAY);
         gauge1.setDecimals(0);
         gauge1.setBarBackgroundColor(Color.rgb(229, 237, 255));
@@ -131,7 +131,7 @@ public class RootLayoutController {
         gauge2.setAnimated(true);
         gauge2.setAnimationDuration(10000L);
         gauge2.setTitle("");
-        gauge2.setUnit("MB used");
+        gauge2.setUnit("%");
         gauge2.setUnitColor(Color.GRAY);
         gauge2.setDecimals(0);
         gauge2.setBarBackgroundColor(Color.rgb(229, 237, 255));
@@ -148,7 +148,6 @@ public class RootLayoutController {
         gauge2.setTickLabelOrientation(TickLabelOrientation.ORTHOGONAL);
         gauge1.relocate(30,80);
         gauge2.relocate(230,80);
-        gauge2.setDisable(true);
         storCapPane.getChildren().addAll(gauge1, gauge2);
 
         getStorageInfo(null);
@@ -163,17 +162,17 @@ public class RootLayoutController {
         System.out.println(resulStorageMap1.get(1).getKey());
         System.out.println(resulStorageMap1.get(1).getValue().getKey());
         System.out.println(resulStorageMap1.get(1).getValue().getValue());
-        gauge1.setValue(resulStorageMap1.get(1).getValue().getValue());
-        gauge1.setMaxValue(resulStorageMap1.get(1).getValue().getKey());
+        gauge1.setValue(resulStorageMap1.get(1).getValue().getValue()*100/resulStorageMap1.get(1).getValue().getKey());
+        gauge1.setMaxValue(100);
+
         storage1Label.setText(resulStorageMap1.get(1).getKey());
 
         if (resulStorageMap1.size()!=0) {
             System.out.println(resulStorageMap1.get(2).getKey());
             System.out.println(resulStorageMap1.get(2).getValue().getKey());
             System.out.println(resulStorageMap1.get(2).getValue().getValue());
-            gauge2.setValue(resulStorageMap1.get(2).getValue().getValue());
-            gauge2.setMaxValue(resulStorageMap1.get(2).getValue().getKey());
-            //gauge2.setDisable(false);
+            gauge2.setValue(resulStorageMap1.get(2).getValue().getValue()*100/(resulStorageMap1.get(2).getValue().getKey()+1));
+            gauge2.setMaxValue(100);
             storage2Label.setText(resulStorageMap1.get(2).getKey());
         }
     }
