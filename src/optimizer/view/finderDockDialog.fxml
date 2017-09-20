@@ -17,12 +17,12 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="130.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="227.0" minHeight="10.0" prefHeight="216.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="126.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="dockFixButton" mnemonicParsing="false" onAction="#dockFix" prefHeight="100.0" prefWidth="200.0" text="Dock Fix">
+            <Button fx:id="finderDockFixButton" mnemonicParsing="false" onAction="#finderDockFix" prefHeight="100.0" prefWidth="218.0" text="Finder &amp; Dock Fixer" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="30.0" top="30.0" />
                </GridPane.margin>
@@ -30,28 +30,12 @@
                   <Font name="Catamaran Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="finderFixButton" mnemonicParsing="false" onAction="#finderFix" prefHeight="100.0" prefWidth="200.0" text="Finder Fix" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="30.0" top="30.0" />
-               </GridPane.margin>
-               <font>
-                  <Font name="Catamaran Bold" size="20.0" />
-               </font>
-            </Button>
-            <Button fx:id="gotItDockFinderLayer" mnemonicParsing="false" onAction="#actionClose" text="got it" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="gotItDockFinderLayer" mnemonicParsing="false" onAction="#actionClose" text="Close" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="45.0" top="60.0" />
                </GridPane.margin>
             </Button>
-            <Text fx:id="dockFixText" fill="#727070" strokeType="OUTSIDE" strokeWidth="0.0" text="Use for Dock fix" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets left="30.0" />
-               </GridPane.margin>
-               <font>
-                  <Font name="Catamaran SemiBold" size="15.0" />
-               </font>
-            </Text>
-            <Text fx:id="finderFixText" fill="#727070" strokeType="OUTSIDE" strokeWidth="0.0" text="Use for Finder fix" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Text fx:id="finderFixText" fill="#727070" strokeType="OUTSIDE" strokeWidth="0.0" text="Use for Finder &amp; Dock fix" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>

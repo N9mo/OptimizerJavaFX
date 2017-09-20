@@ -24,6 +24,6 @@
             <Font name="Catamaran SemiBold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="gotItWebSiteLayer" layoutX="365.0" layoutY="346.0" mnemonicParsing="false" onAction="#closeWindow" text="Got it" />
+      <Button fx:id="gotItWebSiteLayer" layoutX="365.0" layoutY="346.0" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
    </children>
 </AnchorPane>

@@ -11,9 +11,8 @@ import optimizer.model.Account;
 
 public class OptimizerDialogController {
 
-    @FXML
-    private ProgressBar memoryCashCleanProgress;
-    @FXML
+
+   /* @FXML
     private ProgressBar storageCashCleanProgress;
     @FXML
     private ProgressBar dnsCashCleanProgress;
@@ -24,22 +23,25 @@ public class OptimizerDialogController {
     @FXML
     private Label dnsCashCleanLabel;
     @FXML
-    private Label storageCashCleanLabel;
+    private Label storageCashCleanLabel;*/
+
     @FXML
     private Label memoryCashCleanLabel;
+    @FXML
+    private ProgressBar memoryCashCleanProg;
 
     public void memoryCashClean(ActionEvent actionEvent) {
-        OptimizerController.cachedMemoryCleaner(Account.getPassword());
+        Double result = Double.valueOf(OptimizerController.cachedMemoryCleaner(Account.getPassword()));
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         memoryCashCleanLabel.setText("done");
-        memoryCashCleanProgress.setProgress(1);
+        memoryCashCleanProg.setProgress(result/100);
     }
 
-    public void storageCashClean(ActionEvent actionEvent) {
+    /*public void storageCashClean(ActionEvent actionEvent) {
         OptimizerController.cacheStorageCleaner();
         try {
             Thread.sleep(5000);
@@ -75,7 +77,7 @@ public class OptimizerDialogController {
         trashCleanLabel.setText("done");
         trashCleanProgress.setProgress(1);
     }
-
+*/
     public void actionClose(ActionEvent actionEvent) {
         Node source = (Node)  actionEvent.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();

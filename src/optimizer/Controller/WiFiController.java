@@ -114,7 +114,6 @@ public class WiFiController {
 
         // turning the network adapter off(cycle start)
         output = executeCommand("networksetup -setairportpower airport off");
-        System.out.println(output);   //test
 
         // waiting 3 seconds before turning the network adapter on
         try {
@@ -125,7 +124,6 @@ public class WiFiController {
 
         // turning the network adapter on(cycle stop)
         output = executeCommand("networksetup -setairportpower airport on");
-        System.out.println(output);   //test
 
         // deploying the result of the TraceRoute
         traceOutputFrame.setSize(600, 600);
@@ -157,35 +155,23 @@ public class WiFiController {
 
             // reading the result of the the TraceRoute
             while ((data = traceInutStream.read()) > 9.5) {
-                //System.out.println("data* " + traceInutStream.read()); //Test
-
                 traceOutput += (char) data;
-                //System.out.println("traceOutput* " + traceOutput.contains()); //Test
+
+                System.out.println(data); //Test
 
                 // troubleshooting the location of packet loss
                 if (data == '*') {
                     if (traceOutput.contains("1")){
-
                         tracePacketLossLocation = "PACKET LOSS AT MODEM";
-                        System.out.println(tracePacketLossLocation); //Test
                         resultModem =1;}
                     if (traceOutput.contains("2")){
                         tracePacketLossLocation = "PACKET LOSS AT YOUR ISP";
-                        System.out.println(tracePacketLossLocation); //Test
                         resultISP =1;}
                     if (traceOutput.contains("3")){
                         tracePacketLossLocation = "PACKET LOSS AT EXTERNAL SERVER";
-                        System.out.println(tracePacketLossLocation); //Test
                         resultServer =1;}
-
-
-                    System.out.println("tracePacketLossLocation* " + tracePacketLossLocation);   //test
-
                 }
-                System.out.println("traceOutput* " + traceOutput);   //test
-
             }
-            //System.out.println("traceOutput* " + traceOutput);   //test
             if (tracePacketLossLocation.equals(""))
                 tracePacketLossLocation = "No Packet Loss";
 
@@ -198,9 +184,6 @@ public class WiFiController {
 
         traceOutput="";
         int [] result= {resultModem, resultISP, resultServer};
-        System.out.println("resultModem" + resultModem); //Test
-        System.out.println("resultISP" + resultISP); //Test
-        System.out.println("resultServer" + resultServer); //Test
         return result;
 
     }
