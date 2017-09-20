@@ -51,14 +51,14 @@ public class Main extends Application {
         window.setHeight(300);
         window.setWidth(300);
 
-        TextField username = new TextField();
+        /*TextField username = new TextField();
         username.setPromptText("user name");
         username.setStyle("-fx-text-inner-color: gray;");
         username.setTranslateY(70);
-        username.setTranslateX(65);
+        username.setTranslateX(65);*/
 
         PasswordField password = new PasswordField();
-        password.setPromptText("password");
+        password.setPromptText("Enter sudo password");
         password.setStyle("-fx-text-inner-color: gray;");
         password.setTranslateY(100);
         password.setTranslateX(65);
@@ -103,12 +103,11 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent event) {
                 //if (username.getText().equals("user") && password.getText().equals("12345")) {
-                if (!username.getText().isEmpty() && !password.getText().isEmpty()) {
+                if (!password.getText().isEmpty()) {
                     Account.setPassword(password.getText());
-                    Account.setLogin(username.getText());
                     window.close();
                 } else {
-                    loginErrorLabel.setText("          Incorrect username or password\n                       Please try again");
+                    loginErrorLabel.setText("          Incorrect password. Please try again.");
                     System.out.println("Error");
                 }
             }
@@ -123,7 +122,7 @@ public class Main extends Application {
         });
 
         Pane layout = new Pane();
-        layout.getChildren().addAll(username, password, loginBtn, cancelBtn, ivDuck, loginErrorLabel);
+        layout.getChildren().addAll(password, loginBtn, cancelBtn, ivDuck, loginErrorLabel);
         Scene scene = new Scene(layout);
         layout.getStylesheets().add(this.getClass().getResource("style/dark.css").toExternalForm());
 
