@@ -61,7 +61,7 @@
             </Text>
             <Button fx:id="okBtn" mnemonicParsing="false" onAction="#actionClose" text="Close" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <GridPane.margin>
-                  <Insets left="50.0" />
+                  <Insets />
                </GridPane.margin>
             </Button>
             <Text fx:id="energyCycle" fill="#8d8a8a" strokeType="OUTSIDE" strokeWidth="0.0" text="Energy Cycle" GridPane.rowIndex="4">

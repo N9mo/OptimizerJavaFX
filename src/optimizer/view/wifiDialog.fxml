@@ -119,7 +119,7 @@
             <ProgressBar fx:id="modemWFProgrProgress" prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button fx:id="gotItWifiLayer" layoutX="269.0" layoutY="353.0" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
-      <Button layoutX="171.0" layoutY="353.0" mnemonicParsing="false" onAction="#fixWiFi" text="Start" />
+      <Button fx:id="gotItWifiLayer" layoutX="300.0" layoutY="353.0" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
+      <Button layoutX="199.0" layoutY="353.0" mnemonicParsing="false" onAction="#fixWiFi" text="Start" />
    </children>
 </AnchorPane>
