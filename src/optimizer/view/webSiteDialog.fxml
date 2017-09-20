@@ -13,7 +13,10 @@
             <Font name="Catamaran Bold" size="20.0" />
          </font>
       </Button>
-      <TextField fx:id="webTextField" layoutX="253.0" layoutY="176.0" prefHeight="26.0" prefWidth="289.0" promptText="google.com" />
+      <TextField fx:id="webTextField" layoutX="253.0" layoutY="176.0" prefHeight="26.0" prefWidth="289.0" promptText="google.com">
+         <font>
+            <Font name="Catamaran SemiBold" size="15.0" />
+         </font></TextField>
       <Label fx:id="webLabel1" layoutX="295.0" layoutY="131.0" text="Enter the website address here:">
          <font>
             <Font name="Catamaran SemiBold" size="15.0" />
@@ -24,6 +27,6 @@
             <Font name="Catamaran SemiBold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="gotItWebSiteLayer" layoutX="365.0" layoutY="346.0" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
+      <Button fx:id="gotItWebSiteLayer" layoutX="291.0" layoutY="353.0" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
    </children>
 </AnchorPane>

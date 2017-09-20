@@ -79,26 +79,41 @@
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Catamaran SemiBold" size="15.0" />
+               </font>
             </Text>
             <Text fx:id="energyWhenFullValue" fill="#8a8888" strokeType="OUTSIDE" strokeWidth="0.0" text="value" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Catamaran SemiBold" size="15.0" />
+               </font>
             </Text>
             <Text fx:id="energyCurrentValue" fill="#8a8888" strokeType="OUTSIDE" strokeWidth="0.0" text="value" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Catamaran SemiBold" size="15.0" />
+               </font>
             </Text>
             <Text fx:id="energyDecayedValue" fill="#8a8888" strokeType="OUTSIDE" strokeWidth="0.0" text="value" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Catamaran SemiBold" size="15.0" />
+               </font>
             </Text>
             <Text fx:id="energyCycleValue" fill="#8a8888" strokeType="OUTSIDE" strokeWidth="0.0" text="value" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Catamaran SemiBold" size="15.0" />
+               </font>
             </Text>
          </children>
       </GridPane>
