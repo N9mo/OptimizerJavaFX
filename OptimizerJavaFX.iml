@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Medusa-7.9" level="project" />
-    <orderEntry type="library" name="charm-glisten-4.3.5" level="project" />
+    <orderEntry type="library" exported="" name="Medusa-7.9" level="project" />
+    <orderEntry type="library" exported="" name="charm-glisten-4.3.5" level="project" />
   </component>
 </module>

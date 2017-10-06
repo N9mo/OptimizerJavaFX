@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Optimizer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Optimizer_jar</output-path>
+    <root id="archive" name="OptimizerJavaFX.jar">
+      <element id="module-output" name="OptimizerJavaFX" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/Medusa-7.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/charm-glisten-4.3.5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
